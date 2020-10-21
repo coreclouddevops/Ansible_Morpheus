@@ -5,5 +5,5 @@
   tasks:
   - name: ansible create directory example
     file:
-      path: /opt/morpheus/devops_directory
+      path: tmp/devops_directory
       state: directory
