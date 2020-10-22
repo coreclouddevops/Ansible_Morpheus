@@ -1,6 +1,10 @@
-- name: ensure wget is installed
-  yum:
-    name: wget
-    state: present
-    update_cache: true
+- hosts: all
   become: true
+  tasks:
+    - name: ensure wget is installed
+      yum:
+         name: wget
+         state: present
+         update_cache: true
+      become: true
+   
