@@ -1,5 +1,4 @@
 - hosts: all
-  become: true
   tasks:
   - name: ansible create directory example
     file:
