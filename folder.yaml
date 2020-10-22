@@ -1,7 +1,6 @@
 - hosts: all
   remote_user: root
   become: true
-  become_method: sudo
   tasks:
   - name: ansible create directory example
     file:
