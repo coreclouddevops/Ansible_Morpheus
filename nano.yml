@@ -1,4 +1,4 @@
-- hosts: Nano
+- hosts: all
   tasks:
     - name: Install Nano
       command: sudo apt-get install nano 
