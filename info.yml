@@ -1,4 +1,4 @@
-- hosts: web
+- hosts: unassigned
   become: true
   gather_facts: yes
 
