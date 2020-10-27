@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: web
   become: true
   gather_facts: yes
 
