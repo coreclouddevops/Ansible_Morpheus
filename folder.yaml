@@ -1,8 +1,10 @@
 - name : Create Directory 
   hosts: all
   tasks:
+  shell: "echo $HOME"
+  register: out
   - name: ansible create directory with mode setting example
     file:
-      path: $HOME/devops_directory
+      path: "{{home}}/devops_directory"
       state: directory
       mode: "u=rw,g=wx,o=rwx"
