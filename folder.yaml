@@ -1,6 +1,8 @@
-- hosts: all
+- name : Create Directory 
+  hosts: all
   tasks:
-  - name: ansible create directory example
+  - name: ansible create directory with mode setting example
     file:
-      path: tmp/devops_directory
+      path: $HOME/devops_directory
       state: directory
+      mode: "u=rw,g=wx,o=rwx"
