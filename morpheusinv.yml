@@ -5,5 +5,5 @@ groups:
     searchstring:
       appname: tomcat
       apptier: App
-morpheus_url: 'https://10.0.0.11/'
+morpheus_url: 'http://10.0.0.11/'
 morpheus_api_key: 275600ff-dcbe-478d-adf6-4104cbfc0bb8
