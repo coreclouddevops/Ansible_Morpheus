@@ -1,5 +1,4 @@
----
-- hosts: localhost
+- hosts: all
   gather_facts: true
   tasks:
     plugin: morpheus_inventory
