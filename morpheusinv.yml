@@ -5,6 +5,6 @@ groups:
     searchtype: app
     searchstring:
       appname: tomcat
-      apptier: Web
+      apptier: app
 morpheus_url: 'https://ec2-3-128-205-101.us-east-2.compute.amazonaws.com'
 morpheus_api_key: 275600ff-dcbe-478d-adf6-4104cbfc0bb8
