@@ -1,5 +1,4 @@
 plugin: morpheus_inventory
-become: yes
 groups:
   - name: app
     searchtype: app
