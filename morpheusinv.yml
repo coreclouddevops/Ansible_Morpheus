@@ -2,7 +2,7 @@ plugin: morpheus_inventory
 become: yes
 groups:
   - name: app
-    searchtype: app
+    searchtype: Web
     searchstring:
       appname: tomcat
       apptier: Web
