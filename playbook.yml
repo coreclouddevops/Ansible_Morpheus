@@ -1,5 +1,4 @@
 - hosts: app
-  become: yes
   gather_facts: true
   tasks:
     - ping:
