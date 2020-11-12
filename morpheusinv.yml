@@ -3,7 +3,7 @@ groups:
   - name: app
     searchtype: app
     searchstring:
-      appname: tomcat
+      appname: tomcat_instance
       apptier: App
 morpheus_url: 'https://localhost'
 morpheus_api_key: 772b85da-d6fe-4403-a1a6-7eab4fc342de
