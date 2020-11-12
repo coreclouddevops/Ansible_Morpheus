@@ -1,0 +1,101 @@
+- hosts: all
+  tasks:
+    - name: Update yum
+      command: sudo yum update -y
+    - name: Change password for ec2-user
+      command: echo -e "sonarqube\nsonarqube" | sudo passwd ec2-user
+    - name: Install Postgres
+      command: sudo amazon-linux-extras install postgresql9.6 -y
+    - name: Update yum
+      command: sudo yum update -y
+    - name: Install Postgres Server
+      command: sudo yum install -y postgresql-server.x86_64
+    - name: Enable Postgres
+      command: sudo systemctl enable postgresql.service
+    - name: Create database cluster
+      command: sudo /usr/bin/postgresql-setup --initdb
+    - name: Start Postgres
+      command: sudo systemctl start postgresql
+    - name: Create DB User
+      command: sudo -u postgres -- psql -c "CREATE USER sonar WITH ENCRYPTED PASSWORD 'sonar_password'"
+    - name: Create Database
+      command: sudo -u postgres -- psql -c "CREATE DATABASE sonarqube"
+    - name: Grant Privileges 
+      command: sudo -u postgres -- psql -c "GRANT ALL PRIVILEGES ON DATABASE sonarqube to sonar"
+    - name: Edit authentication methods of local and host connections - I
+      command: sudo sed -i '$ a local all sonar md5' /var/lib/pgsql/data/pg_hba.conf
+    - name: Edit authentication methods of local and host connections - II
+      command: sudo sed -i 's/ident/md5/' /var/lib/pgsql/data/pg_hba.conf
+    - name: Restart Postgres
+      command: sudo systemctl restart postgresql
+    - name: Add group
+      command: sudo groupadd sonar
+    - name: Create User
+      command: sudo useradd -c "Sonar System User" -d /opt/sonarqube -g sonar -s /bin/bash sonar
+    - name: etting a password
+      command: echo -e "sonarqube\nsonarqube" | sudo passwd sonar
+    - name: Add user to group
+      command: sudo usermod -a -G sonar ec2-user
+    - name: Relogin
+      command: echo -e "sonarqube" | exec su -l $USER
+    - name: Download Java
+      command: curl -O https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz
+    - name: Unzip Java file
+      command: tar zxf openjdk-11.0.1_linux-x64_bin.tar.gz
+    - name: Move java to local
+      command: sudo mv jdk-11.0.1 /usr/local/
+    - name: Change File Mode of Java
+      command: sudo chmod -R 755 /usr/local/jdk-11.0.1
+    - name: Set Path of Java
+      command: sudo sed -i '$ a export JAVA_HOME=/usr/local/jdk-11.0.1\nexport PATH=$JAVA_HOME/bin:$PATH' /etc/profile
+    - name: Load Path
+      command: source /etc/profile
+    - name: Download SonarQube
+      command: wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.5.0.37579.zip
+    - name: Unzip SonarQube
+      command: unzip sonarqube-8.5.0.37579.zip
+    - name: Create Directory
+      command: sudo mkdir /opt/sonarqube
+    - name: Move SonarQube to created Directory
+      command: sudo mv -v sonarqube-8.5.0.37579/* /opt/sonarqube
+    - name: Change Owner permission of Sonar
+      command: sudo chown -R sonar:sonar /opt/sonarqube
+    - name: Change file mode of Sonar
+      command: sudo chmod -R 775 /opt/sonarqube
+    - name: Create Directory data
+      command: sudo mkdir /home/data
+    - name: Create Directory temp
+      command: sudo mkdir /home/temp
+    - name: Change Ownership of data
+      command: sudo chown -R sonar:sonar /home/data
+    - name: Change permission of data
+      command: sudo chmod -R 775 /home/data
+    - name: Change Ownership of temp
+      command: sudo chown -R sonar:sonar /home/temp
+    - name: Change permission of temp
+      command: sudo chmod -R 775 /home/temp
+    - name: Edit Sonar.sh
+      command: sudo sed -i 's/#RUN_AS_USER=/RUN_AS_USER=sonar/' /opt/sonarqube/bin/linux-x86-64/sonar.sh
+    - name: Edit Sonar.properties - I
+      command: sudo sed -i 's/#sonar.jdbc.username=/sonar.jdbc.username=sonar/' /opt/sonarqube/conf/sonar.properties
+    - name: Edit Sonar.properties - II
+      command: sudo sed -i 's/#sonar.jdbc.password=/sonar.jdbc.password=sonar_password/' /opt/sonarqube/conf/sonar.properties
+    - name: Edit Sonar.properties - III
+      command: sudo sed -i 's+#sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube?currentSchema=my_schema+sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube+' /opt/sonarqube/conf/sonar.properties
+    - name: Edit Sonar.properties - IV
+      command: sudo sed -i 's/#sonar.web.port=9000/sonar.web.port=8080/' /opt/sonarqube/conf/sonar.properties
+    - name: Edit Sonar.properties - V
+      command: sudo sed -i 's+#sonar.web.context=+sonar.web.context=/sonarqube+' /opt/sonarqube/conf/sonar.properties
+    - name: Edit Sonar.properties - VI
+      command: sudo sed -i 's+#sonar.path.data=data+sonar.path.data=/home/data+' /opt/sonarqube/conf/sonar.properties
+    - name: Edit Sonar.properties - VII
+      command: sudo sed -i 's+#sonar.path.temp=temp+sonar.path.temp=/home/temp+' /opt/sonarqube/conf/sonar.properties
+    - name: Change Virtual Memory and File size - I
+      command: sudo sed -i '$ a * soft nproc 65535\n* hard nproc 65535\n* soft nofile 65535\n* hard nofile 65535' /etc/security/limits.conf
+    - name: Change Virtual Memory and File size - II
+      command: sudo sed -i '$ a vm.max_map_count=262144\nfs.file-max=65535' /etc/sysctl.conf
+    - name: Reload Configuration
+      command: sudo sysctl -p
+    - name: Install SonarQube and its Components
+      command: echo -e "sonarqube" | /opt/sonarqube/bin/linux-x86-64/sonar.sh console
+        
