@@ -2,9 +2,5 @@
   gather_facts: true
   tasks:
     - ping:
-    - debug:
-        msg: "{{ ansible_default_ipv4.address }}"
-    - name: detect if we need the .deb or .rpm
-      set_fact:
-        package_type: "{{ 'deb' if (ansible_os_family == 'Debian') else 'rpm' }}"
     - debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+    
