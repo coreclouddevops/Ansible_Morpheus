@@ -3,5 +3,5 @@
   tasks:
     - name: Show host's ip
       debug:
-        msg: "{{ inventory_host }} + {{ansible_default_ipv4.address}}"
+        msg: "System IP {{ ansible_env.IP_INTERNAL }} has hostname {{ aansible_env.INSTANCE_HOSTNAME }}"
     
