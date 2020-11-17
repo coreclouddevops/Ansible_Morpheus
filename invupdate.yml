@@ -6,10 +6,4 @@
   tasks:
     - name: export environment vars
       command: /bin/sh /etc/profile.d/morpheus.sh
-    - name: Make empty list for psql ips
-      set_fact:
-        psql_ips: []
-    - name: Assemble list of psql ips
-      set_fact: 
-        psql_ips: "{{ psql_ips + [ item.value ] }}"
-      loop: "{{ lookup('dict', ansible_env) }}"
+    
