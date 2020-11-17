@@ -1,6 +1,5 @@
+---
 - hosts: app
-  gather_facts: true
+  gather_facts: yes
   tasks:
-    - ping:
-    - debug:
-        msg: "{{ ansible_default_ipv4.address }}"
+    - debug: var=hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
