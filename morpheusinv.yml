@@ -3,7 +3,7 @@ groups:
   - name: app
     searchtype: app
     searchstring:
-      appname: postgres
+      appname: app
       apptier: App
 morpheus_url: 'https://10.0.0.67'
 morpheus_api_key: 772b85da-d6fe-4403-a1a6-7eab4fc342de
