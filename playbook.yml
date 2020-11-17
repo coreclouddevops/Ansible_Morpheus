@@ -3,7 +3,7 @@
   tasks:
     - name: Show host's ip
       debug:
-        msg: {{ ansible_default_ipv4.address }}
+        msg: "{{ ansible_default_ipv4.address }}"
     - name: Show hostname
       debug:
-        msg: {{ ansible_host }}
+        msg: "{{ ansible_host }}"
