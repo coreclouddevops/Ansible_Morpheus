@@ -3,7 +3,7 @@
   tasks:
     - name: Show host's ip
       debug:
-        msg: "{{ inventory_host }} {{ ansible_default_ipv4.address }}"
+        msg: "{{ ansible_default_ipv4.address }}"
     - name: Write ip
-      local_action: shell echo "{{ inventory_host }} {{ ansible_default_ipv4.address }}" >> /etc/ansible/node_ip/host_ip
+      local_action: shell echo "{{ ansible_default_ipv4.address }}" >> /etc/ansible/node_ip/host_ip
     
