@@ -1,6 +1,6 @@
 plugin: morpheus_inventory
 groups:
-  - name: 2node_app
+  - name: app
     searchtype: app
     searchstring:
       appname: 2node_app
