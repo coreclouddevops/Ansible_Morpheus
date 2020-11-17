@@ -1,6 +1,1 @@
-- hosts: app
-  gather_facts: true
-  tasks:
-    - ping:
-    - debug:
-        msg: "{{ ansible_default_ipv4.address }}"  
+
