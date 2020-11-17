@@ -1,5 +1,6 @@
 - hosts: app
   gather_facts: true
   tasks:
-    - debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+    - name: get ip
+    local_action: shell echo {{ ansible_nodename }}: {{ ansible_all_ipv4_addresses }}  >> /etc/ansible/node_ip/host_ip
     
