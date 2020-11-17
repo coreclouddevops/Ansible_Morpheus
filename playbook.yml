@@ -6,4 +6,4 @@
         msg: {{ ansible_default_ipv4.address }}
     - name: Show hostname
       debug:
-        msg: {{inventory_hostname}}
+        msg: {{ ansible_host }}
