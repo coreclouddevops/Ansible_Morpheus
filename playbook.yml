@@ -3,6 +3,4 @@
   tasks:
     - ping:
     - debug:
-        msg: "{{ ansible_default_ipv4.address }}"
-    - name: Write IP
-      local_action: shell echo "{{ ansible_default_ipv4.address }}" >> /etc/ansible/node_ip/host_ip    
+        msg: "{{ ansible_default_ipv4.address }}"  
