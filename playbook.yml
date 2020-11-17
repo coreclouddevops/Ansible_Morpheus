@@ -1,5 +1,9 @@
----
 - hosts: app
-  gather_facts: yes
+  gather_facts: true
   tasks:
-    - debug: var=hostvars[inventory_hostname]['ansible_env'].SSH_CONNECTION.split(' ')[2]
+    - name: Show host's ip
+      debug:
+        msg: "{{ inventory_host }} {{ ansible_default_ipv4.address }}"
+    - name: Write ip
+      local_action: shell echo "{{ inventory_host }} {{ ansible_default_ipv4.address }}" >> /etc/ansible/node_ip/host_ip
+    
