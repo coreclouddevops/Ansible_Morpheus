@@ -3,5 +3,5 @@
   tasks:
     - name: Show host's ip
       debug:
-        msg: "{{ ansible_default_ipv4.address }}"
+        msg: "{{inventory_hostname}}" "{{ ansible_default_ipv4.address }}"
     
