@@ -3,5 +3,5 @@
   tasks:
     - name: Show host's ip
       debug:
-        msg: "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+        msg: {{ inventory_hostname }} 
     
