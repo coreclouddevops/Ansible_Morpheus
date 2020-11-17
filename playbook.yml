@@ -7,3 +7,5 @@
     - name: detect if we need the .deb or .rpm
       set_fact:
         package_type: "{{ 'deb' if (ansible_os_family == 'Debian') else 'rpm' }}"
+    - name: export environment vars
+      command: /bin/sh /etc/profile.d/morpheus.sh
