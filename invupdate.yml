@@ -1,5 +1,6 @@
 - hosts: app
   gather_facts: true
   tasks:
-    - ping:
-    
+#    - ping:
+    - debug:
+          msg: "System IP {{ ansible_env.IP_INTERNAL }} has hostname {{ aansible_env.INSTANCE_HOSTNAME }}"   
