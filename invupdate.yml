@@ -7,7 +7,7 @@
   tasks:
     - ping:
     - debug:
-        msg: " export {{ ansible_env.INSTANCE_HOSTNAME }} =   {{ ansible_env.IP_INTERNAL }}"
+        msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}"
     - local_action: 
         module: copy 
         content: "{{ ansible_env.INSTANCE_HOSTNAME }}"
