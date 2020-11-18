@@ -7,5 +7,5 @@
       register: HOST_DETAILS
     - name: fetch host data
       fetch: 
-        src: {{ HOST_DETAILS }}
+        src: " {{ HOST_DETAILS }} "
         dest: "/etc/ansible/node_ip/host_ip"
