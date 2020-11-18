@@ -1,6 +1,8 @@
 - hosts: all
+  vars:
+      IP: "{{ ansible_env.IP_INTERNAL }}" 
+      HOSTNAME: "{{ ansible_env.INSTANCE_HOSTNAME }}"  
   tasks:
-  #  - name: Install Nano
-  #    command: sudo yum install nano 
-     - debug:
-         msg: "System IP {{ ansible_env.IP_INTERNAL }} has hostname {{ ansible_env.INSTANCE_HOSTNAME }}"
+    - name: Seting ENV to Host
+      environment:
+        "{{hostname}}": "{{ip}}" 
