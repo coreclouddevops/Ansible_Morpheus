@@ -1,9 +1,6 @@
----
 - hosts: app
-  vars:
-      IP: "{{ ansible_env.IP_INTERNAL }}" 
-      HOSTNAME: "{{ ansible_env.INSTANCE_HOSTNAME }}"  
+  gather_facts: true
   tasks:
-  #  - name: Install envoierment update
-     environment:
-        "{{hostname}}": "{{ip}}" 
+    - ping:
+    - debug:
+        msg: "{{ ansible_default_ipv4.address }}"
