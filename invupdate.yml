@@ -1,6 +1,11 @@
+
 - hosts: app
   gather_facts: true
   tasks:
+    - ping:
+    - debug:
+        msg: "{{ ansible_default_ipv4.address }}"  
+
     - name: export environment vars
       command: /bin/sh /etc/profile.d/morpheus.sh
     - name: Make empty list for tomcat ips
