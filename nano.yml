@@ -4,6 +4,6 @@
       IP: "{{ ansible_env.IP_INTERNAL }}" 
       HOSTNAME: "{{ ansible_env.INSTANCE_HOSTNAME }}"  
   tasks:
-    - name: Install envoierment update
-      environment:
+  #  - name: Install envoierment update
+     environment:
         "{{hostname}}": "{{ip}}" 
