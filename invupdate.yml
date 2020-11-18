@@ -6,7 +6,7 @@
 #    HOSTNAME: "{{ ansible_env.INSTANCE_HOSTNAME }}" 
   gather_facts: true
   tasks:
-  - local_action: 
-      module: copy
-      content: "export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }}"
-      dest: /etc/ansible/node_ip/host_ip
+    - local_action: 
+        module: copy
+        content: "export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }}"
+        dest: /etc/ansible/node_ip/host_ip
