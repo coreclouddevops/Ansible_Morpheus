@@ -4,7 +4,7 @@
     - ping:
     - debug:
         msg: "export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }}"
-        register: HOST_DETAILS
+      register: HOST_DETAILS
     - copy:
         content: "{{ HOST_DETAILS }}"
         dest: "./host_ip.txt"
