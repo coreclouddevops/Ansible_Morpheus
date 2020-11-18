@@ -7,7 +7,7 @@
   tasks:
     - ping:
     - debug:
-        msg: "{{ ansible_default_ipv4.address }}"  
+        msg: "System IP {{ ansible_env.IP_INTERNAL }} has hostname {{ ansible_env.INSTANCE_HOSTNAME }}" 
     - name: Echo my_env_var
       shell: "echo $MY_ENV_VARIABLE"
       environment:
