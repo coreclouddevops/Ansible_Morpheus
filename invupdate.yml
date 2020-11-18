@@ -1,12 +1,12 @@
 
 - hosts: app
-  vars:
-    IP: "{{ ansible_env.IP_INTERNAL }}" 
-    HOSTNAME: "{{ ansible_env.INSTANCE_HOSTNAME }}" 
+#  vars:
+#    IP: "{{ ansible_env.IP_INTERNAL }}" 
+#    HOSTNAME: "{{ ansible_env.INSTANCE_HOSTNAME }}" 
   gather_facts: true
   tasks:
     - ping:
     - debug:
         msg: "{{ ansible_default_ipv4.address }}"  
       environment:
-        hosrname2: "{{HOSTNAME}}"
+        hostname2: workes  
