@@ -5,6 +5,7 @@
     - debug:
         msg: "export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }}"
       register: HOST_DETAILS
-    - copy:
-        content: "{{ HOST_DETAILS }}"
-        dest: "/etc/ansible/node_ip/host_ip"
+    - name: fetch host data
+        fetch: 
+          src: "{{ HOST_DETAILS }}"
+          dest: "/etc/ansible/node_ip/host_ip"
