@@ -9,7 +9,7 @@
     - name: Assemble list of tomcat ips
       set_fact: 
         tomcat_ips: "{{ tomcat_ips + [ item.value ] }}"
-      when: "'tomcat_IP' in item.key"
+      when: "'TOMCAT_IP' in item.key"
       loop: "{{ lookup('dict', ansible_env) }}"
     - name: Make empty list for apache ips
       set_fact:
@@ -17,5 +17,5 @@
     - name: Assemble list of apache ips
       set_fact: 
         apache_ips: "{{ apache_ips + [ item.value ] }}"
-      when: "'apache_IP' in item.key"
+      when: "'APACHE_IP' in item.key"
       loop: "{{ lookup('dict', ansible_env) }}"
