@@ -3,4 +3,4 @@
   #  - name: Install Nano
   #    command: sudo yum install nano 
     - debug:
-          msg: "System IP {{ ansible_env.IP_INTERNAL }} has hostname {{ ansible_env.INSTANCE_HOSTNAME }}"
+          msg: " {{ ansible_env.IP_INTERNAL }} : {{ ansible_env.INSTANCE_HOSTNAME }}"
