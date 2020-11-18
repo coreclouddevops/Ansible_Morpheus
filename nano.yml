@@ -2,7 +2,7 @@
   tasks:
   #  - name: Install Nano
   #    command: sudo yum install nano 
-  #  - debug:
-  #        msg: " {{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }} "
-    - shell:  echo -e "{{ ansible_env.INSTANCE_HOSTNAME }}\n" >> /tmp/test
-      delegate_to:  localhost
+    - local_action: 
+       module: copy 
+       content: " {{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }} "
+       dest: /opt/morpheus/.local/host_ip.txt    
