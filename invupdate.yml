@@ -7,4 +7,4 @@
   tasks:
     - ping:
     - debug:
-        msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}"
+        msg: "{{ ansible_env.INSTANCE_HOSTNAME }}"
