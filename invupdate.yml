@@ -8,7 +8,3 @@
     - ping:
     - debug:
         msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}"
-    - local_action: 
-        module: copy 
-        content: "{{ ansible_env.INSTANCE_HOSTNAME }}"
-        dest: /etc/ansible/node_ip/host_ip
