@@ -1,4 +1,5 @@
 - hosts: app
   gather_facts: true
   tasks:
-    - ping:
+    - name: ping
+      ping:
