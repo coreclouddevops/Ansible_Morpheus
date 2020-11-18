@@ -2,7 +2,5 @@
   tasks:
   #  - name: Install Nano
   #    command: sudo yum install nano 
-    - local_action: 
-            module: copy 
-            content: " {{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }} "
-            dest: /tmp/host_ip.txt    
+     - debug:
+         msg: "System IP {{ ansible_env.IP_INTERNAL }} has hostname {{ ansible_env.INSTANCE_HOSTNAME }}"
