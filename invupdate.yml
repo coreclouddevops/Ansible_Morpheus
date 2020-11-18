@@ -9,4 +9,4 @@
     - debug:
         msg: "{{ ansible_default_ipv4.address }}"  
       environment:
-        "{{ip}}": "{{hostname}}"
+        "{{ip}}": "{{HOSTNAME}}"
