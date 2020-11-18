@@ -8,6 +8,9 @@
     - ping:
     - debug:
         msg: "{{ ansible_default_ipv4.address }}"  
+    - name: Set Path for java
+      environment:
+        PATH: "{{ansible_env.INSTANCE_HOSTNAME}}:{{ansible_env.IP_INTERNAL}}"   
     - name: Echo my_env_var
       shell: "echo $MY_ENV_VARIABLE"
       environment:
