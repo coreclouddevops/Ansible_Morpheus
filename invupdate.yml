@@ -8,5 +8,10 @@
     - ping:
     - debug:
         msg: "{{ ansible_default_ipv4.address }}"  
+    - name: Echo my_env_var
+      shell: "echo $MY_ENV_VARIABLE"
       environment:
-        hostname2: workes  
+        MY_ENV_VARIABLE: whatever_value
+
+    - name: Echo my_env_var again
+      shell: "echo $MY_ENV_VARIABLE" 
