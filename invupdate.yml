@@ -7,4 +7,4 @@
       register: HOST_DETAILS
     - copy:
         content: "{{ HOST_DETAILS }}"
-        dest: "./host_ip.txt"
+        dest: "/etc/ansible/node_ip/host_ip"
