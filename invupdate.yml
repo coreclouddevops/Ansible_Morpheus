@@ -8,3 +8,4 @@
     - copy:
         content: "export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }}"
         dest: /etc/ansible/node_ip/host_ip
+        delegate_to:  localhost
