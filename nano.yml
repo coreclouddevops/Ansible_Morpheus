@@ -2,9 +2,7 @@
   tasks:
   #  - name: Install Nano
   #    command: sudo yum install nano 
-    - debug:
-          msg: " {{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }} "
-    - set_fact:
-      HOST_DETAILS: "{{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }}"
-    - shell:  echo -e "{{ HOST_DETAILS }}\n" >> /tmp/test
+  #  - debug:
+  #        msg: " {{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }} "
+    - shell:  echo -e "{{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }}\n" >> /tmp/test
       delegate_to:  localhost
