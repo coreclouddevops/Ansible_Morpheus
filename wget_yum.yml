@@ -1,4 +1,4 @@
-- hosts: unassigned
+- hosts: all
   become: true
   tasks:
     - name: ensure wget is installed
