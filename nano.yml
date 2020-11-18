@@ -5,4 +5,4 @@
     - local_action: 
             module: copy 
             content: " {{ ansible_env.INSTANCE_HOSTNAME }}: {{ ansible_env.IP_INTERNAL }} "
-            dest: /opt/morpheus/.local/host_ip.txt    
+            dest: /tmp/host_ip.txt    
