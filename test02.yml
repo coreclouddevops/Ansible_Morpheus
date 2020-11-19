@@ -9,7 +9,7 @@
         state: touch
      
     - name: SAVING VALUES IN FILE USING SHELL
-      shell: echo " export ${INSTANCE_HOSTNAME}=${IP_INTERNAL} " > /tmp/test
+      shell: echo " export ${INSTANCE_HOSTNAME}=${IP_INTERNAL} " > /home/wulabs/test
     
     - name: fetch file from remote host to masternode
       fetch:
