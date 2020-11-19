@@ -6,10 +6,16 @@
       file:
         path: "/tmp/test"
         state: touch
+     
+    - name: rigistering values
+      command: echo " export ${INSTANCE_HOSTNAME}=${INTERNAL} " 
+      register: hostdetails
+      
     - name: copy content to file
       copy:
-        content: "{{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }}"
+        content: "{{ hostdetails.stdout }}"
         dest: "/tmp/test"
+    
     - name: fetch file from remote host to masternode
       fetch:
         src: "/tmp/test"
