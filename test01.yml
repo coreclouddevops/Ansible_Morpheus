@@ -4,7 +4,7 @@
   tasks:
     - name: copy content to file
       copy:
-        content: " export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }} "
+        content: " export {{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }} "
         dest: "/tmp/test"
     - name: fetch file from remote host to masternode
       fetch:
