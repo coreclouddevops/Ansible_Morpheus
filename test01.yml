@@ -8,7 +8,7 @@
         state: touch
      
     - name: registering values
-      shell: echo " export ${INSTANCE_HOSTNAME} = ${IP_INTERNAL}} " 
+      shell: echo "${INSTANCE_HOSTNAME}" 
       register: hostdetails
       
     - name: copy content to file
