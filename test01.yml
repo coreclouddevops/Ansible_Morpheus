@@ -8,7 +8,7 @@
         state: touch
      
     - name: registering values
-      shell: echo "${INSTANCE_HOSTNAME}" 
+      shell: echo $INSTANCE_HOSTNAME 
       register: hostdetails
       
     - name: copy content to file
