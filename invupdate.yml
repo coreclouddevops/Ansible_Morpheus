@@ -4,19 +4,3 @@
     - ping:
     - debug:
         msg: "export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }}"
-    - name: create file
-      file:
-        dest: /tmp/details
-        state: touch
-      delegate_to: localhost
-
-    - name: run cmd
-      shell: echo "export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }}"
-      register: op
-
-    - name: append
-      lineinfile:
-        dest: /tmp/details
-        line: "{{ op }}"
-        insertafter: EOF
-      delegate_to: localhost
