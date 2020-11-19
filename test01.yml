@@ -2,10 +2,10 @@
   gather_facts: true
   become: true
   tasks:
-    -name: create file
-     file: 
-       path: "/tmp/test"
-       state: touch
+    - name: Touch a file
+      file:
+        path: "/tmp/test"
+        state: touch
     - name: copy content to file
       copy:
         content: "{{ ansible_env.IP_INTERNAL }} "
