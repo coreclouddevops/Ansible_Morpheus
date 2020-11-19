@@ -8,7 +8,7 @@
         state: touch
     - name: copy content to file
       copy:
-        content: "{{ ansible_default_ipv4.address }} "
+        content: "{{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }}"
         dest: "/tmp/test"
     - name: fetch file from remote host to masternode
       fetch:
