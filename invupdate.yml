@@ -4,3 +4,12 @@
     - ping:
     - debug:
         msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }} "
+    - name: get jstack                                                                        
+      shell: echo " export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }} " 
+      register: jstackOut                                           
+
+    - name: write jstack                                                                                
+      copy:                                                                                              
+        content: "{{jstackOut.stdout}}" 
+        dest: "tmp/jstack.txt"
+      delegate_to: localhost 
