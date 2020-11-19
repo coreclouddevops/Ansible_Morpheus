@@ -1,3 +1,4 @@
+---
 - hosts: all
   gather_facts: true
   become_user: wulabs
@@ -10,6 +11,13 @@
     - name: SAVING VALUES IN FILE USING SHELL
       shell: echo " export ${INSTANCE_HOSTNAME}=${IP_INTERNAL}  " > /home/wulabs/test
     
+    
+
+
+---
+- hosts: all
+  gather_facts: true
+  tasks:
     - name: fetch file from remote host to masternode
       fetch:
         src: "/home/wulabs/test"
