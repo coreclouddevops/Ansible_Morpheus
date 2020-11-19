@@ -1,6 +1,6 @@
 - hosts: all
   gather_facts: true
-  become_user: wulabs
+#  become_user: wulabs
   tasks:
     - name: Touch a file
       file:
