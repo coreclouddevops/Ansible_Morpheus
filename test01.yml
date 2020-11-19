@@ -1,5 +1,7 @@
 - hosts: app
   gather_facts: true
   tasks:
+    - ping:
     - debug:
         msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }} "
+
