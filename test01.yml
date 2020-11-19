@@ -8,7 +8,7 @@
         state: touch
      
     - name: registering values
-      command: echo " export {{ansible_env.INSTANCE_HOSTNAME}} = {{ansible_env.IP_INTERNAL}} " 
+      shell: echo " export ${INSTANCE_HOSTNAME} = ${IP_INTERNAL}} " 
       register: hostdetails
       
     - name: copy content to file
