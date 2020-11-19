@@ -11,9 +11,6 @@
       shell: echo "export ${INSTANCE_HOSTNAME^^}=${IP_INTERNAL}" > /home/wulabs/test
     
     
-
-
-
 - hosts: app
   gather_facts: true
   become: true
@@ -23,3 +20,10 @@
         src: "/home/wulabs/test"
         dest: "node_ip/{{ inventory_hostname }}.sh"
         flat: yes
+
+
+- hosts: app
+  gather_facts: true
+  tasks:
+    - name: Execute the script
+      command: sh /var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*.sh
