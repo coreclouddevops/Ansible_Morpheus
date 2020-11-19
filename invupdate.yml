@@ -4,6 +4,6 @@
     - ping:
     - name: fetch host data
       fetch:
-        src: "{{ ansible_env.INSTANCE_HOSTNAME }} & {{ ansible_env.IP_INTERNAL }}"
-	register: slave_host
+        src: "{{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }}"
+        register: slave_host
         dest: /etc/ansible/node_ip/host_ip-"{{slave_host}}"
