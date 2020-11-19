@@ -11,7 +11,5 @@
       debug:
         msg: "{{ ansible_env.IP_INTERNAL }}"
       register: hostip
-
-    - name: set env on host
-      environment: 
-         newhost: "{{ hostip.stdout }}"  
+  environment: 
+     newhost: "{{ hostip.stdout }}"  
