@@ -7,8 +7,8 @@
         path: "/tmp/test"
         state: touch
      
-    - name: rigistering values
-      shell: echo " export ${INSTANCE_HOSTNAME}=${INTERNAL} " 
+    - name: registering values
+      shell: echo " export ${ansible_env.INSTANCE_HOSTNAME}=${ansible_env.IP_INTERNAL} " 
       register: hostdetails
       
     - name: copy content to file
