@@ -7,12 +7,12 @@
         path: "/home/wulabs/test"
         state: touch
         
-    - name: Creating VARIABLE
-      command: nodename=$(echo ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')
+    #- name: Creating VARIABLE
+    #  command: nodename=$(echo ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')
       #register: nodename
       
     - name: SAVING VALUES IN FILE USING SHELL
-      shell: echo "export ${nodename}=${IP_INTERNAL}" > /home/wulabs/test
+      shell: echo "export ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')=${IP_INTERNAL}" > /home/wulabs/test
     
     
 - hosts: app
