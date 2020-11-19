@@ -8,6 +8,7 @@
         state: touch
      
     - name: SAVING VALUES IN FILE USING SHELL
+      become_user: wulabs
       shell: echo " export ${INSTANCE_HOSTNAME}=${IP_INTERNAL} " > /tmp/test
     
     - name: fetch file from remote host to masternode
