@@ -28,9 +28,6 @@
       copy:
         src: /var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*.sh
         dest: "/home/wulabs/test"
-        owner: wulabs
-        group: wulabs
-        mode: u+rw,g-wx,o-rwx
         
 - hosts: app
   tasks:        
