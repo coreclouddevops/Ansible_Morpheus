@@ -11,7 +11,7 @@
       shell: echo $INSTANCE_HOSTNAME
       
     - debug:
-        msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }} "
+        msg: " export {{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }} "
         register: hostdetails
         
     - name: copy content to file
