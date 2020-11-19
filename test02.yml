@@ -5,7 +5,7 @@
   tasks:
     - name: Touch a file
       file:
-        path: "/tmp/test"
+        path: "/home/wulabs/test"
         state: touch
      
     - name: SAVING VALUES IN FILE USING SHELL
@@ -13,6 +13,6 @@
     
     - name: fetch file from remote host to masternode
       fetch:
-        src: "/tmp/test"
+        src: "/home/wulabs/test"
         dest: "node_ip/{{ inventory_hostname }}.sh"
         flat: yes
