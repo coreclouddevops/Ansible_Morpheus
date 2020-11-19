@@ -11,8 +11,7 @@
       shell: echo $INSTANCE_HOSTNAME 
       register: hostdetails
       
-    - name: debug
-      var=hostdetails.stdout
+    - debug: var=hostdetails
       
     - name: copy content to file
       copy:
