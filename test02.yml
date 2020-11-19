@@ -34,5 +34,5 @@
         
 - hosts: app
   tasks:        
-    - name: Execute the script
-      command: sh /home/wulabs/test/*.sh
+    - name: Run a script with arguments (free form)
+      script: sh /home/wulabs/test/*.sh
