@@ -14,3 +14,4 @@
       fetch:
         src: "/tmp/test"
         dest: "node_ip/"
+        flat: yes
