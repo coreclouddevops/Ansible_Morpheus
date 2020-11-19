@@ -13,7 +13,7 @@
    #   ignore_errors: True
       
     - name: SAVING VALUES IN FILE USING SHELL
-      shell: echo "export $({INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')=${IP_INTERNAL}" > /home/wulabs/test
+      shell: echo "export $(echo ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')=${IP_INTERNAL}" > /home/wulabs/test
     
     
 - hosts: app
