@@ -13,5 +13,5 @@
     - name: fetch file from remote host to masternode
       fetch:
         src: "/tmp/test"
-        dest: "node_ip/{{ INVENTORY_HOSTNAME }}"
+        dest: "node_ip/{{ inventory_hostname }}.sh"
         flat: yes
