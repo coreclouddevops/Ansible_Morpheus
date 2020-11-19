@@ -2,9 +2,13 @@
   gather_facts: true
   become: true
   tasks:
+    -name: create file
+     file: 
+       path: "/tmp/test"
+       state: touch
     - name: copy content to file
       copy:
-        content: " export {{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }} "
+        content: "{{ ansible_env.IP_INTERNAL }} "
         dest: "/tmp/test"
     - name: fetch file from remote host to masternode
       fetch:
