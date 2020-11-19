@@ -17,6 +17,7 @@
 ---
 - hosts: all
   gather_facts: true
+  become: true
   tasks:
     - name: fetch file from remote host to masternode
       fetch:
