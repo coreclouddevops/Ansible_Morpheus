@@ -15,3 +15,4 @@
         src: "/home/wulabs/test"
         dest: "node_ip/{{ inventory_hostname }}.sh"
         flat: yes
+        validate_checksum: no
