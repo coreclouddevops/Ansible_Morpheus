@@ -3,6 +3,6 @@
   tasks:
     - ping:
     - name: registering info 
-      shell: echo " export {{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }} "
+        shell: echo " export {{ ansible_env.INSTANCE_HOSTNAME }} = {{ ansible_env.IP_INTERNAL }} "
       register: jstackOut 
 
