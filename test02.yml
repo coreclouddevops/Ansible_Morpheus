@@ -6,9 +6,13 @@
       file:
         path: "/home/wulabs/test"
         state: touch
-     
+        
+    - name: Creating VARIABLE
+      shell: echo ${INSTANCE_HOSTNAME | tr '[:lower:]' '[:upper:]'
+      register: Nodename
+      
     - name: SAVING VALUES IN FILE USING SHELL
-      shell: echo "export ${INSTANCE_HOSTNAME^^}=${IP_INTERNAL}" > /home/wulabs/test
+      shell: echo "export {{ Nodename.stdout }}=${IP_INTERNAL}" > /home/wulabs/test
     
     
 - hosts: app
