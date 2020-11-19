@@ -12,7 +12,6 @@
     
     
 - hosts: app
-  gather_facts: true
   become: true
   tasks:
     - name: fetch file from remote host to masternode
@@ -23,7 +22,7 @@
 
 
 - hosts: app
-  gather_facts: true
+  become: true
   tasks:
     - name: Another symbolic mode example, adding some permissions and removing others
       copy:
@@ -33,5 +32,7 @@
         group: wulabs
         mode: u+rw,g-wx,o-rwx
         
+- hosts: app
+  tasks:        
     - name: Execute the script
       command: sh /home/wulabs/test/*.sh
