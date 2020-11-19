@@ -8,7 +8,7 @@
         state: touch
         
     - name: Creating VARIABLE
-      shell: nodename=$(echo ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')
+      command: nodename=$(echo ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')
       #register: nodename
       
     - name: SAVING VALUES IN FILE USING SHELL
