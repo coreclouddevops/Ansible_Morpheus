@@ -1,6 +1,7 @@
 - hosts: all
   gather_facts: true
   become: true
+  become_user: wulabs
   tasks:
     - name: Touch a file
       file:
@@ -8,7 +9,6 @@
         state: touch
      
     - name: SAVING VALUES IN FILE USING SHELL
-      become_user: wulabs
       shell: echo " export ${INSTANCE_HOSTNAME}=${IP_INTERNAL} " > /tmp/test
     
     - name: fetch file from remote host to masternode
