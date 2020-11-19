@@ -1,0 +1,17 @@
+- hosts: all
+  gather_facts: true
+  tasks:
+    - ping:
+    - name: debuging hostname
+      debug:
+        msg: "{{ ansible_env.INSTANCE_HOSTNAME }}"
+      register: hostdetails  
+
+    - name: debuging ip address
+      debug:
+        msg: "{{ ansible_env.IP_INTERNAL }}"
+      register: hostip
+
+    - name: set env on host
+      environment: 
+         newhost: "{{ hostip.stdout }}"  
