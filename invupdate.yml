@@ -1,6 +1,5 @@
 - hosts: app
   become: yes
-  become_user: root
   gather_facts: true
   tasks:
     - ping:
