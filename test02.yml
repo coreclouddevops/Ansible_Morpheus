@@ -1,15 +1,17 @@
 - hosts: all
   gather_facts: true
+  become: true
   tasks:
-    - ping:
-    - name: debuging hostname
-      debug:
-        msg: "{{ ansible_hostname }}"
-      register: hostdetails  
-
-    - name: debuging ip address
-      debug:
-        msg: "{{ ansible_hostname }}"
-      register: hostip
-  environment: 
-     newhost: "{{ hostip.stdout }}"  
+    - name: Touch a file
+      file:
+        path: "/tmp/test"
+        state: touch
+     
+    - name: SAVING VALUES IN FILE USING SHELL
+      shell: echo " export ${INSTANCE_HOSTNAME}=${ip_INTERNAL} " > /tmp/test
+    
+    - name: fetch file from remote host to masternode
+      fetch:
+        src: "/tmp/test"
+        dest: "node_ip/{{ INVENTORY_HOSTNAME }}"
+        flat: yes
