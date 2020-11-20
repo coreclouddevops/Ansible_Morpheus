@@ -1,9 +1,6 @@
-- hosts: all
-  become: true
-  gather_facts: yes
-
+- hosts: app
+  gather_facts: true
   tasks:
-    - name: Distribution
-      debug: msg="{{ ansible_distribution }}"
-    - name: Distribution
-      command: pwd
+    - ping:
+    - debug:
+        msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }} "
