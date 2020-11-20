@@ -6,11 +6,10 @@
       file:
         path: "/home/wulabs/test"
         state: touch
-        
-   # - name: Get the region from the EC2 instance
-   #   shell: /usr/bin/ec2metadata --availability-zone | sed 's/.$//'
-   #   register: region
-   #   ignore_errors: True
+    - name: create directory 
+      file:
+        path: "/home/wulabs/testdir"
+        state: directory
       
     - name: SAVING VALUES IN FILE USING SHELL
       shell: echo "export $(echo ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')=${IP_INTERNAL}" > /home/wulabs/test
@@ -34,7 +33,7 @@
     - name: copy file to remote host
       copy:
         src: "/var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/"
-        dest: "/home/wulabs/test/"
+        dest: "/home/wulabs/testdir"
 
     - name: writing file to /etc/profile.d/morpheus.sh
-      shell: cat /home/wulabs/test/*.sh >> /home/wulabs/morpheus.sh
+      shell: cat /home/wulabs/testdir/*.sh >> /home/wulabs/morpheus.sh
