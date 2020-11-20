@@ -29,7 +29,7 @@
 
 - hosts: app
   become: true
-  ecome_user: root
+  become_user: root
   tasks:
     - name: copy file to remote host
       copy:
