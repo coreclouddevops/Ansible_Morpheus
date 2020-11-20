@@ -36,4 +36,4 @@
         dest: "/home/wulabs/testdir"
 
     - name: writing file to /etc/profile.d/morpheus.sh
-      shell: cat /home/wulabs/testdir/*.sh >> /home/wulabs/morpheus.sh
+      shell: cat /home/wulabs/testdir/*.sh >> /etc/profile.d/morpheus.sh
