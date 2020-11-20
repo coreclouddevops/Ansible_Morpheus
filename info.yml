@@ -1,6 +1,5 @@
 - hosts: all
   gather_facts: true
   tasks:
-    - ping:
-    - debug:
-        msg: " export {{ ansible_env.INSTANCE_HOSTNAME }}={{ ansible_env.IP_INTERNAL }} "
+    - debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+
