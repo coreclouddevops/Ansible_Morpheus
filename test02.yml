@@ -29,11 +29,11 @@
 
 - hosts: app
   become: true
-  become_user: root
+#  become_user: root
   tasks:
     - name: copy file to remote host
       copy:
-        src: "/var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*.sh"
+        src: "/var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/"
         dest: "/home/wulabs/test/"
 
     - name: writing file to /etc/profile.d/morpheus.sh
