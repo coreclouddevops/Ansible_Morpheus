@@ -31,9 +31,9 @@
   become: true
   tasks:
     - name: copy file to remote host
-      copy:
-        src: "/var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*.sh"
-        dest: "/home/wulabs/test/"
+        template:
+          src: "/var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*.sh"
+          dest: "/home/wulabs/test/"
 
     - name: writing file to /etc/profile.d/morpheus.sh
       shell: cat /home/wulabs/test/*.sh >> /home/wulabs/morpheus.sh
