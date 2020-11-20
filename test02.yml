@@ -26,15 +26,11 @@
         flat: yes
 
 
+
 - hosts: app
   become: true
   tasks:
-    - name: Another symbolic mode example, adding some permissions and removing others
+    - name: copy file to remote host
       copy:
-        src: /var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*.sh
-        dest: "/home/wulabs/test"
-        
-- hosts: app
-  tasks:        
-    - name: Run a script with arguments (free form)
-      script: sh /home/wulabs/test/*.sh
+        src: /var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*
+        dest: /etc/profile.d/
