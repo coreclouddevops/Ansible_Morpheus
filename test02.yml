@@ -29,9 +29,10 @@
 
 - hosts: app
   become: true
+  ecome_user: root
   tasks:
     - name: copy file to remote host
-      template:
+      copy:
         src: "/var/opt/morpheus/morpheus-ui/repo/git/d2702c84b01370f86d9a84919866f4d4/node_ip/*.sh"
         dest: "/home/wulabs/test/"
 
