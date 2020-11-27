@@ -2,6 +2,6 @@ plugin: morpheus_inventory
 groups:
   - name: test
     searchtype: cloud
-    searchstring: amazon
+    searchstring: CMaaS_AWS_Morpheus
 morpheus_url: 'https://ec2-3-137-168-217.us-east-2.compute.amazonaws.com'
 morpheus_api_key: 956b8650-3d59-490b-8b4b-84963616512c
