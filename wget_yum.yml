@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: test_search
   become: true
   tasks:
     - name: ensure wget is installed
