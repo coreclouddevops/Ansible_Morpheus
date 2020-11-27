@@ -1,6 +1,6 @@
 plugin: morpheus_inventory
 groups:
-  - name: test_search
+  - name: test
     searchtype: name
     searchstring: test100
 morpheus_url: 'https://localhost'
