@@ -2,7 +2,6 @@ plugin: morpheus_inventory
 groups:
   - name: test_search
     searchtype: CMaaS
-    searchstring:
-      cloud: Aws_Cloud_First_Group
+    searchstring: Aws_Cloud_First_Group
 morpheus_url: 'https://localhost'
 morpheus_api_key: 956b8650-3d59-490b-8b4b-84963616512c
