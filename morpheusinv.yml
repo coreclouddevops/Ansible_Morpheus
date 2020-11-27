@@ -1,19 +1,8 @@
 plugin: morpheus_inventory
 groups:
-  - name: psql
-    searchtype: app
+  - name: test_search
+    searchtype: name
     searchstring:
-      appname: sonar7
-      apptier: psql
-  - name: elastic
-    searchtype: app
-    searchstring:
-      appname: sonar7
-      apptier: elastic
-  - name: sonar
-    searchtype: app
-    searchstring:
-      appname: sonar7
-      apptier: sonar
+      instance: test01
 morpheus_url: 'https://localhost'
 morpheus_api_key: 956b8650-3d59-490b-8b4b-84963616512c
