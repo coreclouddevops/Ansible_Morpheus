@@ -1,7 +1,7 @@
 plugin: morpheus_inventory
 groups:
   - name: test_search
-    searchtype: cloud
-    searchstring: CMaaS_AWS_Morpheus
+    searchtype: name
+    searchstring: test100
 morpheus_url: 'https://localhost'
 morpheus_api_key: 956b8650-3d59-490b-8b4b-84963616512c
