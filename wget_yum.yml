@@ -1,4 +1,4 @@
-- hosts: test_100
+- hosts: test
   become: true
   tasks:
     - name: ensure wget is installed
