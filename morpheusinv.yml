@@ -1,6 +1,6 @@
 plugin: morpheus_inventory
 groups:
-  - name: test
+  - name: test_100
     searchtype: name
     searchstring: test_100
 morpheus_url: 'https://ec2-3-137-168-217.us-east-2.compute.amazonaws.com'
