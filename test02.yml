@@ -1,4 +1,4 @@
-- hosts: app
+- hosts: sonar7
   gather_facts: true
   become_user: wulabs
   tasks:
@@ -15,7 +15,7 @@
       shell: echo "export $(echo ${INSTANCE_HOSTNAME} | tr '[:lower:]' '[:upper:]')=${IP_INTERNAL}" > /home/wulabs/test
     
     
-- hosts: app
+- hosts: sonar7
   become: true
   tasks:
     - name: fetch file from remote host to masternode
@@ -26,7 +26,7 @@
 
 
 
-- hosts: app
+- hosts: sonar7
   become: true
 #  become_user: root
   tasks:
