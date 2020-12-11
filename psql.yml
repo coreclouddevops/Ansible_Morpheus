@@ -5,10 +5,10 @@
         sudo yum update -y
         sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
         # Install PostgreSQL:
-        #sudo yum install -y postgresql96-server
-        sudo yum install postgresql96 postgresql96-server
+        sudo yum install -y postgresql96-server
+        #sudo yum install postgresql96 postgresql96-server -y
         # Optionally initialize the database and enable automatic start:
-        #/usr/pgsql-9.6/bin/postgresql96-setup initdb
-        sudo service postgresql96 initdb
+        /usr/pgsql-9.6/bin/postgresql96-setup initdb
+        #sudo service postgresql96 initdb
         systemctl enable postgresql-9.6
         systemctl start postgresql-9.6
