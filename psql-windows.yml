@@ -1,0 +1,11 @@
+- hosts: all 
+  tasks:
+    - name: Download the Postgressql installer
+      win_get_url:
+        url: https://get.enterprisedb.com/postgresql/postgresql-13.0-1-windows-x64.exe
+        dest: C:\postgresql-13.0\postgresql-13.0-1-windows-x64.exe
+
+    - name: Install MSI
+      win_package: 
+        path: C:\postgresql-13.0\postgresql-13.0-1-windows-x64.exe
+        state: present
