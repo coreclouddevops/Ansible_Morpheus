@@ -8,8 +8,8 @@
         volume_type: 'gp2'
         region: 'us-east-2'
         zone: 'us-east-2a'
-      register: new_volume
-      delete_on_termination: true
+        register: new_volume
+        delete_on_termination: true
 
     - name: format and mount the volume
       ec2_vol:
