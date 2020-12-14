@@ -10,6 +10,4 @@
        zone: us-east-2a
        file_system: ext4
        device_name: /dev/app
-       region: us-east-2
-       zone: us-east-2a
        delete_on_termination: true
