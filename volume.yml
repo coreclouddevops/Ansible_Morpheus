@@ -4,6 +4,7 @@
   tasks:
    - name: create a new volume
    - ec2_vol:
+       instance: "{{ morpheus.instance }}"
        volume_size: 10
        volume_type: gp2
        region: us-east-2
