@@ -3,20 +3,13 @@
   become_user : root
   tasks:
    - name: create a new volume
-     amazon.aws.ec2_vol:
-       volume_size: '10'
-       volume_type: 'gp2'
-       region: 'us-east-2'
-       zone: 'us-east-2a'
+   - ec2_vol:
+       volume_size: 10
+       volume_type: gp2
+       region: us-east-2
+       zone: us-east-2a
+       file_system: ext4
+       device_name: /dev/app
+       region: us-east-2
+       zone: us-east-2a
        delete_on_termination: true
-
-   - name: format and mount the volume
-      amazon.aws.ec2_vol:
-        file_system: ext4
-
-   - name: Attach volume to instance
-      amazon.aws.ec2_vol: 
-        device_name: '/dev/app'
-        delete_on_termination: true
-        region: 'us-east-2'
-        zone: 'us-east-2a'
