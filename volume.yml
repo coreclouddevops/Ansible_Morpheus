@@ -2,8 +2,8 @@
   become : true
   become_user : root
   tasks:
-   #- name: create a new volume
-    - amazon.aws.ec2_vol:
+    - name: create a new volume
+      amazon.aws.ec2_vol:
    #    instance: "{{ morpheus.instance }}"
         volume_size: 10
         volume_type: gp2
