@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: true
+  #become: true
   become_user: wulabs
   tasks: 
     - name: create the EBS volume
