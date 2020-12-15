@@ -1,8 +1,13 @@
----
-- hosts : 
+- hosts : all
+  become : true
+  become_user : root
   tasks: 
     - amazon.aws.ec2_vol:
-        instance: XXXXXX
-        volume_size: 50
+       # instance: XXXXXX
+        volume_size: 10
         volume_type: gp2
-        device_name: /dev/xvdf
+        region: us-east-2
+        zone: us-east-2a
+        file_system: ext4
+        device_name: /dev/app
+        delete_on_termination: true
