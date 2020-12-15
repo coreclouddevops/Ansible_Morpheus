@@ -3,13 +3,15 @@
   become: true
   become_user: root
   tasks: 
-    #- name: creating the EBS volume
-    - ec2_vol:
-        #instance: "{{ morpheus.instance }}"
+    - name: create the EBS volume
+      ec2_vol:
         volume_size: 10
         volume_type: gp2
         region: us-east-2
         zone: us-east-2a
         file_system: ext4
+        #instance: "{{ morpheus.instance }}"
         device_name: /dev/app
         delete_on_termination: true
+        tags:
+          Name: linux_volume
