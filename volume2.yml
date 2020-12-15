@@ -2,7 +2,7 @@
   become: true
   become_user: root
   tasks: 
-    - ec2_vol:
+    - amazon.aws.ec2_vol:
        # instance: XXXXXX
         volume_size: 10
         volume_type: gp2
