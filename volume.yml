@@ -3,12 +3,12 @@
   become_user : root
   tasks:
    #- name: create a new volume
-   - amazon.aws.ec2_vol:
-   #   instance: "{{ morpheus.instance }}"
-       volume_size: 10
-       volume_type: gp2
-       region: us-east-2
-       zone: us-east-2a
-       file_system: ext4
-       device_name: /dev/app
-       delete_on_termination: true
+    - amazon.aws.ec2_vol:
+   #    instance: "{{ morpheus.instance }}"
+        volume_size: 10
+        volume_type: gp2
+        region: us-east-2
+        zone: us-east-2a
+        file_system: ext4
+        device_name: /dev/app
+        delete_on_termination: true
