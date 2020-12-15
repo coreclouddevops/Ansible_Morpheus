@@ -1,9 +1,10 @@
 - hosts: all
+  gather_facts: true
   become: true
   become_user: root
   tasks: 
     - amazon.aws.ec2_vol:
-       # instance: XXXXXX
+        instance: "{{ morpheus.instance }}"
         volume_size: 10
         volume_type: gp2
         region: us-east-2
