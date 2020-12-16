@@ -1,3 +1,4 @@
 - hosts: all
   tasks:
- 
+    - name: Execute a comand in the remote shell
+      ansible.windows.win_shell: choco install postgresql13 --params '/Password:Root' --ia '--serverport 5433'
