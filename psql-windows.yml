@@ -1,6 +1,11 @@
-- hosts: all
-  tasks: 
+- hosts: unassigned
+  tasks:
+    - name: Ensure 7-Zip is installed via Chocolatey
+      win_chocolatey:
+        name: 7zip
+        state: present
+        
     - name: Ensure PSQL is installed via Chocolatey
       win_chocolatey:
-        name: postgresql13 --params '/Password:test' --ia '--serverport 5433'
+        name: postgresql13
         state: present
