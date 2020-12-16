@@ -1,4 +1,4 @@
-- hosts: win
+- hosts: unassigned
   tasks:
     - name: Ensure 7-Zip is installed via Chocolatey
       win_chocolatey:
