@@ -4,7 +4,9 @@
   become_user: root
   tasks:
     - name: install boto
-      shell: sudo pip install boto -y 
+      shell: |
+        sudo yum install python2-pip -y
+        sudo pip install boto -y 
       
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
