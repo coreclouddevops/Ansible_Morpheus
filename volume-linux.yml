@@ -4,7 +4,7 @@
   become_user: root
   tasks:
     - name: install boto
-      yum: name=boto2 update_cache=yes state=latest
+      yum: name=boto update_cache=yes state=latest
       
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
