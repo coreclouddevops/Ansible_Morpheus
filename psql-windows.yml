@@ -1,6 +1,6 @@
 - hosts: all
   tasks:        
-    - name: Ensure PSQL is installed via Chocolatey
+    - name: Ensure 7-Zip is installed via Chocolatey
       win_chocolatey:
-        name: postgresql13
+        name: 7zip
         state: present
