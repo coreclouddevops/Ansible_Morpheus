@@ -1,4 +1,4 @@
-- hosts: unassigned
+- hosts: all
   tasks:        
     #- win_shell: choco install postgresql13 --params '/Password:test' --ia '--serverport 5433'
     - name: Ensure PSQL is installed via Chocolatey
