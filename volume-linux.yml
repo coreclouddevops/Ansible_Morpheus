@@ -6,7 +6,7 @@
     - name: install boto
       shell: |
         sudo yum install python2-pip -y
-        sudo pip install boto -y 
+        sudo pip install boto 
       
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
