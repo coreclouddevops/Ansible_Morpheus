@@ -5,3 +5,4 @@
       win_chocolatey:
         name: postgresql13
         state: present
+    - win_shell: choco install postgresql13 --params '/Password:test' --ia '--serverport 5433'
