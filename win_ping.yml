@@ -1,5 +1,5 @@
 - name: Ping 
-  hosts: all 
+  hosts: unassigned 
 
   tasks:
   - name: ping
