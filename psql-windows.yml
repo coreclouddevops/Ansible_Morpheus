@@ -1,5 +1,8 @@
 - hosts: unassigned
   tasks:        
+    - name: Execute aPSQL install comand in the shell
+      ansible.windows.win_shell: choco install postgresql13 --params '/Password:test' --ia '--serverport 5433'
+    
     - name: Ensure PSQL is installed via Chocolatey
       win_chocolatey:
         name: postgresql13
