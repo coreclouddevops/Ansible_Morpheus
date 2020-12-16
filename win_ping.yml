@@ -1,4 +1,5 @@
+
 - hosts: all
-  task:
+  tasks:
     - name: Example from an Ansible Playbook
       ansible.windows.win_ping:
