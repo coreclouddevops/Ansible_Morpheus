@@ -16,8 +16,8 @@
     volume_size: '8'
     volume_type: 'gp2'
     device_name: '/dev/xvdf'
-    zone: 'ap-south-1a'
-    region: 'ap-south-1'
+    zone: 'us-east-2a'
+    region: 'us-east-2'
     
   tasks:
     - name: create a new volume
