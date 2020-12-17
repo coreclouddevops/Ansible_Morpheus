@@ -5,5 +5,5 @@
         name: 7zip
         state: present
         
-    - name: Execute a comand in the remote shell
+    - name: Execute a comand in the remote shell, stdout goes to the specified file on the remote
       ansible.windows.win_shell: choco install postgresql13 --params '/Password:test' --ia '--serverport 5433' -y --force
