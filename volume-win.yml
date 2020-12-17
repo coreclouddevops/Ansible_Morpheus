@@ -3,17 +3,7 @@
   become: yes
   become_user: Administrator
   become_method: runas
-  tasks:
-    - name: Install chocolatey,python,pip and boto
-      win_chocolatey:
-        name:
-        - chocolatey
-        - chocolatey-core.extension 
-        - python2
-        - pip
-        - boto
-        state: present
-
+  
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
   gather_facts: true  # don't gather facts against localhost
