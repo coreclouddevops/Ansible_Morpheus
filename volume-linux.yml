@@ -38,7 +38,7 @@
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
         #instance: "{{ External ID }}"
-        #instance_id: "{{ ansible_ec2_instance_id }}"
+        instance_id: "{{ ansible_ec2_instance_id }}"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
