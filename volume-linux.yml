@@ -18,7 +18,7 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: "{{ ansible_env.instance_id }}"
+    instance: "{{ ansible_env.instanceid }}"
 
   tasks:
     - name: Creating a new volume
