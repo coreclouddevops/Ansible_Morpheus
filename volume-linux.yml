@@ -7,7 +7,7 @@
       shell: |
         sudo yum install python2-pip -y
         sudo pip install boto 
-      
+
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
   gather_facts: False  # don't gather facts against localhost
@@ -18,10 +18,12 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    
+
   tasks:
-    - name: create a new volume
+    - name: Creating a new volume
       ec2_vol:
+        aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+        aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
         volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
@@ -31,9 +33,12 @@
           Name: linux_volume
       register: new_volume
 
-    - name: attach created volume
+    - name: Attaching created volume
       ec2_vol:
+        aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+        aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
         instance: "{{ inventory_hostname }}"
+        #instance_id: "{{ ansible_ec2_instance_id }}"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
@@ -45,7 +50,7 @@
   become: true
   become_user: root
   tasks:
-    - name: mount the volume
+    - name: Mounting the volume
       shell: |
         sudo mkfs -t xfs /dev/xvdf
         sudo yum install xfsprogs
