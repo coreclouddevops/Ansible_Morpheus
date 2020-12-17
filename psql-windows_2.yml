@@ -1,8 +1,10 @@
 - hosts: all
   tasks:
-    - name: Ensure 7-Zip is installed via Chocolatey
+    - name: Install chocolatey
       win_chocolatey:
-        name: 7zip
-        state: present
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+          state: present
         
-    - win_shell: choco install postgresql13 --params '/Password:test' --ia '--serverport 5433' -y --force
+    - win_shell: choco install postgresql13 --params '/Password:root' --ia '--serverport 5433' -y --force
