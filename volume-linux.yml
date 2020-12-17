@@ -22,8 +22,8 @@
   tasks:
     - name: Creating a new volume
       ec2_vol:
-        aws_access_key: <%=cypher.read('secret/ansible_a')%>
-        aws_secret_key: <%=cypher.read('secret/ansible_s')%>
+        aws_access_key: "{{ lookup('cypher', 'baseurl=https://10.0.0.133 authtype=token api_token=956b8650-3d59-490b-8b4b-84963616512c secret_key=secret/ansible_a')}}"
+        aws_secret_key: "{{ lookup('cypher', 'baseurl=https://10.0.0.133 authtype=token api_token=956b8650-3d59-490b-8b4b-84963616512c secret_key=secret/ansible_s')}}"
         volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
