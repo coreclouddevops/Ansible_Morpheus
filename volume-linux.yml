@@ -23,7 +23,7 @@
     - name: Creating a new volume
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
-        aws_secret_key: "{{ lookup('cypher','secret=secret/ansible:secret_key') }}"
+        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
         volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
@@ -35,8 +35,8 @@
 
     - name: Attaching created volume
       ec2_vol:
-        aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
-        aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+        aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
+        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
         instance: "{{ inventory_hostname }}"
         #instance_id: "{{ ansible_ec2_instance_id }}"
         id: "{{ new_volume.volume_id }}"
