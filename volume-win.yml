@@ -58,5 +58,11 @@
     - name: Partition the created volume
       win_partition:
         drive_letter: D
-        partition_size: -1
+        partition_size: "{{ volume_size }}"
         disk_number: 1
+    - name: Full format the newly created partition as NTFS and label it
+      win_format:
+        drive_letter: D
+        file_system: NTFS
+        new_label: Formatted
+        full: True
