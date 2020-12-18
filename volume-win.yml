@@ -1,3 +1,4 @@
+---
 - hosts: all
   become: yes
   become_user: Administrator
@@ -61,6 +62,7 @@
         drive_letter: D
         partition_size: "{{ volume_size }}"
         disk_number: 1
+        offline: no
     - name: Full format the newly created partition as NTFS and label it
       win_format:
         drive_letter: D
