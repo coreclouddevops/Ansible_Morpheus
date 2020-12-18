@@ -1,18 +1,14 @@
----
 - hosts: all
   become: yes
   become_user: Administrator
   become_method: runas
   tasks:
-    - name: Install chocolatey,python,pip and boto
+    - name: Install chocolatey
       win_chocolatey:
-        name:
-        - chocolatey
-        - chocolatey-core.extension
-        - python2
-        - pip
-        - boto
-        state: present
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+          state: present
   
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
@@ -45,7 +41,7 @@
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
         instance: "{{ inventory_hostname }}"
-        #instance: ""
+        #instance: "i-07493f82af76b9913"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
