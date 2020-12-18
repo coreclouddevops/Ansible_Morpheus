@@ -8,8 +8,7 @@
           name:
            - chocolatey
            - chocolatey-core.extension
-           - python2 -y
-           - pip -y
+           - python2
           state: present
   
 - hosts: all  # put localhost.  We are processing against aws
