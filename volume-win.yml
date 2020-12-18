@@ -10,8 +10,8 @@
            - chocolatey-core.extension
            - python2
            - pip
-           - boto
           state: present
+    - win_shell: pip.exe install boto
   
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
