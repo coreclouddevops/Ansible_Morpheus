@@ -9,6 +9,8 @@
            - chocolatey
            - chocolatey-core.extension
            - python2
+           - pip
+           - boto
           state: present
   
 - hosts: all  # put localhost.  We are processing against aws
