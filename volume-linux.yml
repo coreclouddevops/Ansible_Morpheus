@@ -45,7 +45,7 @@
         delete_on_termination: true
         region: "{{ region }}"
         zone: "{{ zone }}"
-      loop: "{{ ec2.instances }}"
+      loop: {{ ec2.instances }}
       register: attach_volume
     
 - hosts: all
