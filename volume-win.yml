@@ -6,7 +6,9 @@
   tasks:
     - name: Install chocolatey,python,pip and boto
       win_chocolatey:
-        name: 
+        name:
+        - chocolatey
+        - chocolatey-core.extension
         - python2
         - pip
         - boto
