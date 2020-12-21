@@ -24,7 +24,7 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    ansible_python_interpreter: 'C:\Python27
+    #ansible_python_interpreter: 'C:\Python27
 
   tasks:
     - name: create a new volume
