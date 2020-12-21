@@ -26,8 +26,8 @@
 
   tasks:
     - name: Ensure that python are present on the global system path, and in the specified order
-    ansible.windows.win_path:
-    elements: C:\python27
+      ansible.windows.win_path:
+      elements: C:\python27
     
     - name: create a new volume
       ec2_vol:
