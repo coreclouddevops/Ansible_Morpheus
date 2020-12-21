@@ -38,7 +38,7 @@
         zone: "{{ zone }}"
         tags:
           Name: windows_volume
-        delegate_to: win
+        delegate_to: localhost
       register: new_volume
 
     - name: Ensure volume attachment
