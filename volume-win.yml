@@ -37,6 +37,7 @@
         zone: "{{ zone }}"
         tags:
           Name: windows_volume
+        delegate_to: localhost
       register: new_volume
 
     - name: Ensure volume attachment
@@ -50,6 +51,7 @@
         delete_on_termination: true
         region: "{{ region }}"
         zone: "{{ zone }}"
+        delegate_to: localhost
       register: attach_volume
     
 - hosts: all
