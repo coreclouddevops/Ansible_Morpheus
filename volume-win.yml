@@ -28,7 +28,7 @@
     - name: create a new volume
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
-        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
+        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
         volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
@@ -42,7 +42,7 @@
     - name: Ensure volume attachment
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
-        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
+        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
         instance: "{{ inventory_hostname }}"
         #instance: "i-07493f82af76b9913"
         id: "{{ new_volume.volume_id }}"
