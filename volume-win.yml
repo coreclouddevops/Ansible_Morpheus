@@ -8,7 +8,7 @@
       win_chocolatey:
           name:
            - chocolatey
-           - python2
+           - python3
            - pip
           state: present
     - win_shell: pip.exe install boto
