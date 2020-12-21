@@ -24,13 +24,14 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    #ansible_python_interpreter: 'C:\Python27
+    ansible_python_interpreter: 'C:\Python27\python.exe
 
   tasks:
     - name: create a new volume
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
+        ansible_python_interpreter: "{{ ansible_python_interpreter }}"
         volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
