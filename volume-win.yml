@@ -27,7 +27,7 @@
 
   tasks:
     - name: create a new volume
-      amazon.aws.ec2_vol:
+      ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
         volume_size: "{{ volume_size }}"
