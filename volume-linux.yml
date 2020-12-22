@@ -18,7 +18,7 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: "{{ ansible_env.instanceid }}"
+    instance: "{{ ansible_env.INSTANCE_ID }}"
 
   tasks:
     - name: export environment vars
@@ -30,13 +30,22 @@
     - name: Assemble list of volume ids
       set_fact: 
         volume_ids: "{{ volume_ids + [ item.value ] }}"
-      when: "'instanceid' in item.key"
+      when: "'INSTANCE_ID' in item.key"
+      loop: "{{ lookup('dict', ansible_env) }}"
+
+    - name: Make empty list for ips
+      set_fact:
+        volume_ips: []
+    - name: Assemble list of volume ips
+      set_fact: 
+        volume_ips: "{{ volume_ips + [ item.value ] }}"
+      when: "'INSTANCE_IP' in item.key"
       loop: "{{ lookup('dict', ansible_env) }}"
 
     - name: Type Debug 1
       ignore_errors: yes
       debug:
-        msg: instance
+        msg: "{{ instance }}"
     
     # - name: Type Debug 2
     #   ignore_errors: yes
@@ -46,7 +55,7 @@
     - name: Type Debug 3
       ignore_errors: yes
       debug:
-        msg: "{{ ansible_env.instanceid }}"
+        msg: "{{ ansible_env.INSTANCE_ID }}"
 
     - name: Type Debug 4
       ignore_errors: yes
