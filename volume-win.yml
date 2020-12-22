@@ -1,8 +1,8 @@
 ---
 - hosts: all
   become: yes
-  become_user: Administrator
-  become_method: runas
+  #become_user: Administrator
+  #become_method: runas
   tasks:
     - name: Install chocolatey
       win_chocolatey:
