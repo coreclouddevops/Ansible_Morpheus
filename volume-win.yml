@@ -16,6 +16,7 @@
         region: us-east-2
         zone: us-east-2a
         volume_type: gp2
+        delegate_to: localhost
       register: ec2_vol
  
     - name: Printing the volume information
