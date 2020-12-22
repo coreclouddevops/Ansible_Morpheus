@@ -33,41 +33,57 @@
       debug:
         msg: "{{ ansible_env.instanceid }}"
 
-    - name: Creating a new volume
-      ec2_vol:
-        aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
-        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        volume_size: "{{ volume_size }}"
-        volume_type: "{{ volume_type }}"
-        device_name: "{{ device_name }}"
-        region: "{{ region }}"
-        zone: "{{ zone }}"
-        tags:
-          Name: linux_volume
-      register: new_volume
+    - name: Type Debug 4
+      debug:
+        msg: "{{ servers.externalId }}"
+      
+    - name: Type Debug 5
+      debug:
+        msg: "{{ externalId }}"
 
-    - name: Attaching created volume
-      ec2_vol:
-        aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
-        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        instance: "{{ item.id }}"
-        #instance_ids: "i-09a2b2a1e872601cf"
-        id: "{{ new_volume.volume_id }}"
-        device_name: "{{ device_name }}"
-        delete_on_termination: true
-        region: "{{ region }}"
-        zone: "{{ zone }}"
-      loop: {{ ec2.instances }}
-      register: attach_volume
+    - name: Type Debug 6
+      debug:
+        msg: servers.externalId
+      
+    - name: Type Debug 7
+      debug:
+        msg: externalId
+
+#     - name: Creating a new volume
+#       ec2_vol:
+#         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
+#         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
+#         volume_size: "{{ volume_size }}"
+#         volume_type: "{{ volume_type }}"
+#         device_name: "{{ device_name }}"
+#         region: "{{ region }}"
+#         zone: "{{ zone }}"
+#         tags:
+#           Name: linux_volume
+#       register: new_volume
+
+#     - name: Attaching created volume
+#       ec2_vol:
+#         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
+#         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
+#         instance: "{{ item.id }}"
+#         #instance_ids: "i-09a2b2a1e872601cf"
+#         id: "{{ new_volume.volume_id }}"
+#         device_name: "{{ device_name }}"
+#         delete_on_termination: true
+#         region: "{{ region }}"
+#         zone: "{{ zone }}"
+#       loop: {{ ec2.instances }}
+#       register: attach_volume
     
-- hosts: all
-  become: true
-  become_user: root
-  tasks:
-    - name: Mounting the volume
-      shell: |
-        sudo mkfs -t xfs /dev/xvdf
-        sudo yum install xfsprogs
-        sudo mkdir /data
-        sudo mount /dev/xvdf /data
-        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  xfs  defaults,nofail  0  2" >> /etc/fstab
+# - hosts: all
+#   become: true
+#   become_user: root
+#   tasks:
+#     - name: Mounting the volume
+#       shell: |
+#         sudo mkfs -t xfs /dev/xvdf
+#         sudo yum install xfsprogs
+#         sudo mkdir /data
+#         sudo mount /dev/xvdf /data
+#         sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  xfs  defaults,nofail  0  2" >> /etc/fstab
