@@ -1,2 +1,59 @@
 ---
 # tasks file for volume
+---
+- name: Attaching volume to linux server
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: export environment vars
+      command: /bin/sh /etc/profile.d/morpheus.sh
+    - name: Make empty list for ids
+      set_fact:
+        volume_ids: []
+    - name: Assemble list of volume ids
+      set_fact: 
+        volume_ids: "{{ volume_ids + [ item.value ] }}"
+      when: "'INSTANCE_ID' in item.key"
+      loop: "{{ lookup('dict', ansible_env) }}"
+    - name: Make empty list for ips
+      set_fact:
+        volume_ips: []
+    - name: Assemble list of volume ips
+      set_fact: 
+        volume_ips: "{{ volume_ips + [ item.value ] }}"
+      when: "'INSTANCE_IP' in item.key"
+      loop: "{{ lookup('dict', ansible_env) }}"
+    - name: Type Debug 1
+      ignore_errors: yes
+      debug:
+        msg: "{{ instance }}"
+    
+    # - name: Type Debug 2
+    #   ignore_errors: yes
+    #   debug:
+    #     msg: {{ ansible_env.instanceid }}
+
+    - name: Type Debug 3
+      ignore_errors: yes
+      debug:
+        msg: "{{ ansible_env.INSTANCE_ID }}"
+
+    - name: Type Debug 4
+      ignore_errors: yes
+      debug:
+        msg: "{{ servers.externalId }}"
+      
+    - name: Type Debug 5
+      ignore_errors: yes
+      debug:
+        msg: "{{ externalId }}"
+
+    - name: Type Debug 6
+      ignore_errors: yes
+      debug:
+        msg: servers.externalId
+      
+    - name: Type Debug 7
+      ignore_errors: yes
+      debug:
+        msg: externalId

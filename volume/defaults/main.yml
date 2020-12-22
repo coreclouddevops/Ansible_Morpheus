@@ -1,2 +1,3 @@
 ---
 # defaults file for volume
+instanceid: "{{ ansible_env.INSTANCE_ID }}"
