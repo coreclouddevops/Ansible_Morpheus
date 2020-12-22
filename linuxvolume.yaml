@@ -10,10 +10,10 @@
     instanceid: "{{ ansible_env.INSTANCE_ID }}"
 
   tasks:
-  - name: Type Debug 1
-    ignore_errors: yes
-    debug:
-    msg: {{ instanceid }}
+  # - name: Type Debug 1
+  #   ignore_errors: yes
+  #   debug:
+  #   msg: {{ instanceid }}
 
   - name: Type Debug 2
     ignore_errors: yes
