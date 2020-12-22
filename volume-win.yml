@@ -1,7 +1,7 @@
 ---
 - hosts: all
   become: yes
-  become_user: local
+  become_user: wulabs
   become_method: runas
   tasks:
     - name: Install chocolatey
@@ -18,7 +18,7 @@
   connection: local  # put local.  We are processing against aws
   gather_facts: false  # don't gather facts against localhost
   become: yes
-  become_user: local
+  become_user: wulabs
   
   vars:
     volume_size: '10'
