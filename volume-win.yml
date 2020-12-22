@@ -1,5 +1,5 @@
 ---
-- hosts: localhost  # put localhost.  We are processing against aws
+- hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
   gather_facts: false  # don't gather facts against localhost
   become: yes 
