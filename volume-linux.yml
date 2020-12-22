@@ -23,7 +23,16 @@
   tasks:
     - name: export environment vars
       command: /bin/sh /etc/profile.d/morpheus.sh
-      
+
+    - name: Make empty list for ids
+      set_fact:
+        volume_ids: []
+    - name: Assemble list of volume ids
+      set_fact: 
+        volume_ids: "{{ volume_ids + [ item.value ] }}"
+      when: "'instanceid' in item.key"
+      loop: "{{ lookup('dict', ansible_env) }}"
+
     - name: Type Debug 1
       ignore_errors: yes
       debug:
