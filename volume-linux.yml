@@ -22,6 +22,7 @@
 
   tasks:
     - name: Type Debug 1
+      ignore_errors: yes
       debug:
         msg: instance
     
@@ -34,18 +35,22 @@
     #     msg: "{{ ansible_env.instanceid }}"
 
     - name: Type Debug 4
+      ignore_errors: yes
       debug:
         msg: "{{ servers.externalId }}"
       
     - name: Type Debug 5
+      ignore_errors: yes
       debug:
         msg: "{{ externalId }}"
 
     - name: Type Debug 6
+      ignore_errors: yes
       debug:
         msg: servers.externalId
       
     - name: Type Debug 7
+      ignore_errors: yes
       debug:
         msg: externalId
 
