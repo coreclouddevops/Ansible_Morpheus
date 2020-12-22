@@ -7,8 +7,8 @@
     - name: Install chocolatey
       win_chocolatey:
           name:
+           - chocolatey
            #- chocolatey-core.extension
-           #- chocolatey
            - python2
            - pip
           state: present
