@@ -29,9 +29,9 @@
     #   debug:
     #     msg: {{ ansible_env.instanceid }}
 
-    - name: Type Debug 3
-      debug:
-        msg: "{{ ansible_env.instanceid }}"
+    # - name: Type Debug 3
+    #   debug:
+    #     msg: "{{ ansible_env.instanceid }}"
 
     - name: Type Debug 4
       debug:
