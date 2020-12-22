@@ -45,4 +45,4 @@
         tags:
           Name: windows_volume
         delegate_to: localhost
-      register: new_volume
+      register: ec2_vol
