@@ -21,15 +21,18 @@
     instance: "{{ ansible_env.instanceid }}"
 
   tasks:
+    - name: export environment vars
+      command: /bin/sh /etc/profile.d/morpheus.sh
+      
     - name: Type Debug 1
       ignore_errors: yes
       debug:
         msg: instance
     
-    - name: Type Debug 2
-      ignore_errors: yes
-      debug:
-        msg: {{ ansible_env.instanceid }}
+    # - name: Type Debug 2
+    #   ignore_errors: yes
+    #   debug:
+    #     msg: {{ ansible_env.instanceid }}
 
     - name: Type Debug 3
       ignore_errors: yes
