@@ -40,7 +40,7 @@
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
         #instance: "{{ item.id }}"
         instance: "id"
-        instance_ids: "id"
+        #instance_ids: "id"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
