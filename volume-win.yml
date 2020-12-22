@@ -1,23 +1,71 @@
 ---
+- hosts: all
+  become: yes
+  become_user: Administrator
+  become_method: runas
+  tasks:
+    - name: Install chocolatey
+      win_chocolatey:
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+           - python2
+           - pip
+          state: present
+    - win_shell: pip.exe install boto
+  
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
   gather_facts: false  # don't gather facts against localhost
-  become: yes
-  become_user: wulabs
   
-  tasks: 
-    - name: Creating a Volume
+  vars:
+    volume_size: '10'
+    volume_type: 'gp2'
+    device_name: '/dev/xvdf'
+    zone: 'us-east-2a'
+    region: 'us-east-2'
+
+  tasks:
+    - name: create a new volume
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
-        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        instance: i-076e45ebf9ac81282
-        volume_size: 10
-        device_name: /dev/xvdf
-        region: us-east-2
-        zone: us-east-2a
-        volume_type: gp2
-        #delegate_to: "{{inventory_hostname}}"
-      register: ec2_vol
- 
-    - name: Printing the volume information
-      debug: var=ec2_vol
+        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
+        volume_size: "{{ volume_size }}"
+        volume_type: "{{ volume_type }}"
+        device_name: "{{ device_name }}"
+        region: "{{ region }}"
+        file_system: NTFS
+        zone: "{{ zone }}"
+        tags:
+          Name: windows_volume
+      register: new_volume
+
+    - name: Ensure volume attachment
+      ec2_vol:
+        aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
+        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_b') }}"
+        instance: "{{ inventory_hostname }}"
+        #instance: "i-07493f82af76b9913"
+        id: "{{ new_volume.volume_id }}"
+        device_name: "{{ device_name }}"
+        delete_on_termination: true
+        region: "{{ region }}"
+        zone: "{{ zone }}"
+      register: attach_volume
+    
+- hosts: all
+  become: true
+  become_user: Administrator
+  tasks:
+    - name: Partition the created volume
+      win_partition:
+        drive_letter: D
+        partition_size: "{{ volume_size }}"
+        disk_number: 1
+        offline: no
+    - name: Full format the newly created partition as NTFS and label it
+      win_format:
+        drive_letter: D
+        file_system: NTFS
+        new_label: Formatted
+        full: True
