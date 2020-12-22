@@ -21,6 +21,18 @@
     instance: "{{ ansible_env.instanceid }}"
 
   tasks:
+    - name: Type Debug 1
+      debug:
+        msg: instance
+    
+    - name: Type Debug 2
+      debug:
+        msg: {{ ansible_env.instanceid }}
+
+    - name: Type Debug 3
+      debug:
+        msg: "{{ ansible_env.instanceid }}"
+
     - name: Creating a new volume
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
