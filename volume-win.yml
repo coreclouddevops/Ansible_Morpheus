@@ -16,7 +16,7 @@
         region: us-east-2
         zone: us-east-2a
         volume_type: gp2
-        delegate_to: "{{inventory_hostname}}"
+        #delegate_to: "{{inventory_hostname}}"
       register: ec2_vol
  
     - name: Printing the volume information
