@@ -1,7 +1,7 @@
 - hosts: all
-  become: yes
-  tasks: 
-    - name: Build nginx 
+  become: true
+  tasks:
+    - name:  Build nginx 
       shell: |
         sudo yum install -y aws-cfn-bootstrap
         sudo mkfs -t ext4 /dev/xvdf
