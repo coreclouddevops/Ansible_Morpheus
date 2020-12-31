@@ -18,14 +18,14 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: "{{ ansible_env.INSTANCE_ID }}"
+    instance: "{{ morpheus['customeOptions']['instance_id'] }}"
 
   tasks:
     - name: Creating a new volume
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        volume_size: "{{ volume_size }}"
+        volume_size: ""{{ morpheus['customeOptions']['volume_size'] }}""
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
         region: "{{ region }}"
