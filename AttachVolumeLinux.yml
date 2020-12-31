@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: Mount Volume
+      shell: |
+        sudo yum install cloud-init,
+        sudo yum install -y aws-cfn-bootstrap,
+        sudo mkfs -t ext4 /dev/xvdf,
+        sudo mkdir /data,
+        sudo mount /dev/xvdf /data,
+        echo \/dev/xvdf       /data   ext4    defaults,nofail 0       2\ >> /etc/fstab
