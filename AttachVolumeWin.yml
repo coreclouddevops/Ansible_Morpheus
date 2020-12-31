@@ -1,14 +1,14 @@
 - hosts: all
-    become: yes
-    become_user: Administrator
-    tasks: 
-      - name: run multi-lined shell commands
-        win_shell: |
-            select disk 2
-            attributes disk clear readonly
-            clean
-            online disk
-            convert gpt
-            create partition primary
-            format quick fs=ntfs label=,\,ORATEMP,\,
-            assign letter=D
+  become: yes
+  become_user: Administrator
+  tasks: 
+   - name: run multi-lined shell commands
+      win_shell: |
+          select disk 2
+          attributes disk clear readonly
+          clean
+          online disk
+          convert gpt
+          create partition primary
+          format quick fs=ntfs label=,\,ORATEMP,\,
+          assign letter=D
