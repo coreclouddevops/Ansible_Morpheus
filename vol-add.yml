@@ -5,9 +5,8 @@
   tasks:
     - name: install pip and boto
       shell: |
-        yum update -y
-        yum install python2-pip -y
-        pip install boto 
+        sudo yum install python2-pip -y
+        sudo pip install boto 
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
   gather_facts: False  # don't gather facts against localhost
@@ -15,17 +14,17 @@
   vars:
     volume_size: '5'
     volume_type: 'gp2'
-    device_name: '/dev/xvdf'
+    device_name: '/dev/xvdh'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: 'i-0569fda89c9fc703e'
+    instance: 'i-0d11c29b920991cdc'
 
   tasks:
     - name: Creating a new volume
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        volume_size: "5"
+        volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
         region: "{{ region }}"
@@ -48,15 +47,3 @@
         zone: "{{ zone }}"
       #loop: {{ ec2.instances }}
       register: attach_volume
-    
-- hosts: all
-  become: true
-  become_user: root
-  tasks:
-    - name: Mounting the volume
-      shell: |
-        sudo mkfs -t xfs /dev/xvdf 
-        sudo yum install xfsprogs
-        sudo mkdir /data
-        sudo mount /dev/xvdf /data
-        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  xfs  defaults,nofail  0  2" >> /etc/fstab
