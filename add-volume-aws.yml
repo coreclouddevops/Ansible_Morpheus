@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: local
   connection: local 
   become: true
   become_user: root
