@@ -25,7 +25,7 @@
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        volume_size: "{{ morpheus['customeOptions']['volume_size'] }}"
+        volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
         region: "{{ region }}"
