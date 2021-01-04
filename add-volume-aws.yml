@@ -48,7 +48,7 @@
         zone: "{{ zone}}"
       #loop: {{ ec2.instances }}
       register: attach_volume
-    
+---    
 - hosts: all
   become: true
   become_user: root
