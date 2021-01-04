@@ -13,7 +13,7 @@
   gather_facts: False  # don't gather facts against localhost
   
   vars:
-    volume_size: '8'
+    volume_size: '10'
     volume_type: 'gp2'
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
