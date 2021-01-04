@@ -1,1 +1,8 @@
-
+- hosts: localhost
+  connection: local 
+  become: true
+  become_user: root
+  tasks:
+    - name: install pip and boto
+      shell: |
+        sudo pip install boto 
