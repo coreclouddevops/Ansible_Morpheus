@@ -13,12 +13,12 @@
   gather_facts: False  # don't gather facts against localhost
   
   vars:
-    volume_size: '10'
+    volume_size: '5'
     volume_type: 'gp2'
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: 'i-0569fda89c9fc703e'
+    instance: 'i-0f3e22f13bcd00fb1'
 
   tasks:
     - name: Creating a new volume
