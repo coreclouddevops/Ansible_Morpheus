@@ -1,5 +1,6 @@
 ---
-- local_action
+- hosts: local
+  connection: local
     - name: install pip and boto
       shell: |
         sudo pip install boto 
