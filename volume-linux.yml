@@ -18,7 +18,7 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: "{{ morpheus['customeOptions']['instance_id'] }}"
+    instance: 'i-0569fda89c9fc703e'
 
   tasks:
     - name: Creating a new volume
@@ -39,7 +39,7 @@
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
         #instance: "{{ item.id }}"
-        instance: "id"
+        instance: "{{}}"
         #instance_ids: "id"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
