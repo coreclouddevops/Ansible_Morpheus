@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   become: true
-  become_user: ubuntu
+  become_user: root
   tasks:
     - name: install pip boto
       shell: |
