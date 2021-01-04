@@ -1,5 +1,6 @@
 - hosts: loacl  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
+  become_method: sudo
   gather_facts: False  # don't gather facts against localhost
   vars:
    # volume_size: '13'
