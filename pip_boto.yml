@@ -2,10 +2,7 @@
   become: yes
   become_user: root
   tasks:
-    - name: Install or update pip
-      community.general.easy_install:
-        name: pip
-        state: latest
-    - name: install pip and boto
+     - name: install pip and boto
       shell: |
-        sudo pip install boto 
+        sudo apt-get install python-pip -y
+        pip install -U boto
