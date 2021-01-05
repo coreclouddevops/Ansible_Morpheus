@@ -1,13 +1,14 @@
 - hosts: all
   gather_facts: true
   tasks:
-    Shell: |
-      sudo yum install gcc -y
-      wget http://download.redis.io/redis-stable.tar.gz
-      tar xvzf redis-stable.tar.gz
-      cd redis-stable
-      make
-      sudo yum-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-      echo deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
-      sudo yum update -y
-      sudo yum install -y mongodb-org-shell
+    - name: Build nginx 
+      shell: |
+        sudo yum install gcc -y
+        wget http://download.redis.io/redis-stable.tar.gz
+        tar xvzf redis-stable.tar.gz
+        cd redis-stable
+        make
+        sudo yum-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+        echo deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+        sudo yum update -y
+        sudo yum install -y mongodb-org-shell
