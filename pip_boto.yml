@@ -1,5 +1,5 @@
 - hosts: all
-  become: true
+  become: yes
   become_user: root
   tasks:
     - name: install pip and boto
