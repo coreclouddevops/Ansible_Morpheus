@@ -8,7 +8,7 @@
         sudo yum install python2-pip -y
         sudo pip install boto 
 - hosts: all  # put localhost.  We are processing against aws
-  connection: local  # put local.  We are processing against aws
+ # connection: local  # put local.  We are processing against aws
   gather_facts: False  # don't gather facts against localhost
   
   vars:
