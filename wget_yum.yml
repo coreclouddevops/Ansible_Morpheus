@@ -1,8 +1,8 @@
-- hosts: test
+- hosts: all
   become: true
   tasks:
     - name: ensure wget is installed
-      yum:
+      apt:
          name: wget
          state: present
          update_cache: true
