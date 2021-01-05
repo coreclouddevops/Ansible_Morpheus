@@ -1,14 +1,10 @@
 - hosts: all
-  become : true
-  become_user : root
+  become: true
+  become_user: root
   tasks:
-  #- name: create a new volume
-   - amazon.aws.ec2_vol:
-   #   instance: "{{ morpheus.instance }}"
-       volume_size: 10
-       volume_type: gp2
-       region: us-east-2
-       zone: us-east-2a
-       file_system: ext4
-       device_name: /dev/app
-       delete_on_termination: true
+    - name: Mounting the volume
+      shell: |
+        sudo mkfs -t ext4 /dev/xvdf
+        sudo mkdir /data
+        sudo mount /dev/xvdf /data
+        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  ext4  defaults,nofail  0  2" >> /etc/fstab
