@@ -3,9 +3,11 @@
   become: true
   become_user: root
   tasks:
+    - name: Install bottle python package
+      pip:
+        name: bottle
     - name: install pip and boto
       shell: |
-        sudo apt install python2-pip -y
         sudo pip install boto 
         
 - hosts: all  # put localhost.  We are processing against aws
