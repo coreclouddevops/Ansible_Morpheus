@@ -8,16 +8,16 @@
         sudo yum install python2-pip -y
         sudo pip install boto 
 - hosts: all  # put localhost.  We are processing against aws
-  connection: local  # put local.  We are processing against aws
+#  connection: local  # put local.  We are processing against aws
   gather_facts: False  # don't gather facts against localhost
   
   vars:
-    volume_size: '5'
+    volume_size: "{{ morpheus['costomOptions']['volume_size'] }}"
     volume_type: 'gp2'
     device_name: '/dev/xvdh'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: 'i-0d11c29b920991cdc'
+    instance: "{{ morpheus['costomOptions']['instance_id'] }}"
 
   tasks:
     - name: Creating a new volume
@@ -37,13 +37,22 @@
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        #instance: "{{ item.id }}"
         instance: "{{ instance }}"
-        #instance_ids: "id"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
         region: "{{ region }}"
         zone: "{{ zone }}"
-      #loop: {{ ec2.instances }}
       register: attach_volume
+
+- hosts: all
+  become: true
+  become_user: root
+  tasks:
+    - name: Mounting the volume
+      shell: |
+        sudo mkfs -t ext4 /dev/xvdf 
+        sudo yum install xfsprogs
+        sudo mkdir /data
+        sudo mount /dev/xvdf /data
+        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  xfs  defaults,nofail  0  2" >> /etc/fstab
