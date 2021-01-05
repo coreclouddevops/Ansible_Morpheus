@@ -12,12 +12,14 @@
   gather_facts: False  # don't gather facts against localhost
   
   vars:
-    volume_size: "{{ morpheus['costomOptions']['volume_size'] }}"
+    volume_size: '4'
+      #"{{ morpheus['costomOptions']['volume_size'] }}"
     volume_type: 'gp2'
     device_name: '/dev/xvdh'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: "{{ morpheus['costomOptions']['instance_id'] }}"
+    instance: 'i-0c93a3a368c9e6093'
+      #"{{ morpheus['costomOptions']['instance_id'] }}"
 
   tasks:
     - name: Creating a new volume
