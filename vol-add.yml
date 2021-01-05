@@ -6,6 +6,7 @@
     - name: Install bottle python package
       pip:
         name: bottle
+        executable: pip3.3
     - name: install pip and boto
       shell: |
         sudo pip install boto 
