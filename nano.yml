@@ -1,8 +1,8 @@
 - hosts: all
   gather_facts: true
   tasks:
-    - Name:
-      Shell: |
+    - name: Run expect to wait for a successful PXE boot via out-of-band CIMC
+      shell: |
         sudo apt-get install gcc -y
         wget http://download.redis.io/redis-stable.tar.gz
         tar xvzf redis-stable.tar.gz
