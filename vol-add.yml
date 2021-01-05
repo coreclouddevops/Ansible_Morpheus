@@ -6,7 +6,7 @@
     - name: install pip and boto
       shell: |
         sudo apt-get update -y
-        sudo apt install python-pip
+        sudo apt-get install python-pip
         sudo pip install boto 
         
 - hosts: all  # put localhost.  We are processing against aws
