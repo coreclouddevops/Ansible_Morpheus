@@ -18,7 +18,7 @@
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: 'i-048b1e88b85bfe747'
+    instance: 'i-02116cfd278a74c91'
 
   tasks:
     - name: Creating a new volume
