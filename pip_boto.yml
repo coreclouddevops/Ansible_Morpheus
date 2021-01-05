@@ -3,6 +3,6 @@
   become_user: root
   tasks:
      - name: install pip and boto
-      shell: |
-        sudo apt-get install python-pip -y
-        pip install -U boto
+       shell: |
+         sudo apt-get install python-pip -y
+         pip install -U boto
