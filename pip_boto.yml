@@ -4,5 +4,5 @@
   tasks:
     - name: install pip and boto
       shell: |
-        sudo yum install python2-pip -y
+        sudo a-getpt install python2-pip -y
         sudo pip install boto 
