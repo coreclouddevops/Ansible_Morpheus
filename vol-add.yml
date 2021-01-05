@@ -24,7 +24,7 @@
       ec2_vol:
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        volume_size: "{{ morpheus['costomOptions']['volume_size'] }}"    #"{{ volume_size }}"
+        volume_size: "{{ morpheus['OptionTypes']['volume_size'] }}"    #"{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
         region: "{{ region }}"
@@ -38,7 +38,7 @@
         aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
         aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
         #instance: "{{ item.id }}"
-        instance: "{{ morpheus['costomOptions']['instance_id'] }}"   #"{{ instance }}"
+        instance: "{{ morpheus['OptionTypes']['instance_id'] }}"   #"{{ instance }}"
         #instance_ids: "id"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
