@@ -7,13 +7,7 @@
       shell: |
           sudo apt-get update -y
           sudo apt-get install build-essential -y
-          echo "----------------------------------"
-          pwd
-          echo "----------------------------------"
-          wget http://download.redis.io/redis-stable.tar.gz
-          tar xvzf redis-stable.tar.gz
-          cd /tmp/redis-stable
-          make
+          cd /home/ && wget http://download.redis.io/redis-stable.tar.gz && tar xvzf redis-stable.tar.gz && cd redis-stable && make
           sudo apt-get install stunnel4
           
     - name: "Document DB Client install"
