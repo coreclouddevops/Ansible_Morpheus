@@ -8,10 +8,9 @@
           sudo apt-get install redis-tools -y
           sudo apt-get update
           sudo apt-get install stunnel4
-      replace:
-        path: /etc/default/stunnel4
-        regexp: 'ENABLED=0'
-        replace: "ENABLED=1"
+          sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+        
+    - name: "Redis-cli install -2 "    
       shell: |
           touch /etc/stunnel/redis-cli.conf
           cat <<EOF > /etc/stunnel/redis-cli.conf
