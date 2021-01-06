@@ -13,12 +13,12 @@
   gather_facts: False  # don't gather facts against localhost
   
   vars:
-    volume_size: '5'
+    volume_size: "{{ morpheus['customOptions']['volume_size'] }}"
     volume_type: 'gp2'
     device_name: '/dev/xvdf'
     zone: 'us-east-2a'
     region: 'us-east-2'
-    instance: 'i-0a2e40f853a616191'
+    instance: "{{ morpheus['customOptions']['instance_id'] }}"
 
   tasks:
     - name: Creating a new volume
@@ -55,8 +55,8 @@
   tasks:
     - name: Mounting the volume
       shell: |
-        sudo mkfs -t xfs /dev/xvdf 
+        sudo mkfs -t ext4 /dev/xvdf 
         sudo yum install xfsprogs
         sudo mkdir /data
         sudo mount /dev/xvdf /data
-        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  xfs  defaults,nofail  0  2" >> /etc/fstab
+        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  ext4  defaults,nofail  0  2" >> /etc/fstab
