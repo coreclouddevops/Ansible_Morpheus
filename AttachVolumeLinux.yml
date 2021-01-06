@@ -1,12 +1,10 @@
 - hosts: all
-  become: yes
+  become: true
   become_user: root
   tasks:
-    - name: Mount Volume
+    - name: Mounting the volume
       shell: |
-        sudo yum install cloud-init,
-        sudo yum install -y aws-cfn-bootstrap,
-        sudo mkfs -t ext4 /dev/xvdf,
-        sudo mkdir /data,
-        sudo mount /dev/xvdf /data,
-        echo \/dev/xvdf       /data   ext4    defaults,nofail 0       2\ >> /etc/fstab
+        sudo mkfs -t ext4 /dev/xvdf
+        sudo mkdir /data
+        sudo mount /dev/xvdf /data
+        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  ext4  defaults,nofail  0  2" >> /etc/fstab
