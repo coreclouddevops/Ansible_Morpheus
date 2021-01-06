@@ -51,8 +51,7 @@
   tasks:
     - name: Mounting the volume
       shell: |
-        sudo mkfs -t ext4 /dev/xvdf 
-        sudo yum install xfsprogs
-        sudo mkdir /data
-        sudo mount /dev/xvdf /data
-        sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  ext4  defaults,nofail  0  2" >> /etc/fstab
+        sudo mkfs -t ext4 /dev/xvdh
+        sudo mkdir /data2
+        sudo mount /dev/xvdh /data2
+        sudo echo "UUID="$(blkid | sed -n '/xvdh/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  ext4  defaults,nofail  0  2" >> /etc/fstab
