@@ -5,6 +5,7 @@
   tasks: 
     - name: "Redis-cli install"
       shell: |
+          sudo apt-get install redis-tools
           sudo apt-get update -y
           sudo apt-get install build-essential -y
           cd /home/ && wget http://download.redis.io/redis-stable.tar.gz && tar xvzf redis-stable.tar.gz && cd redis-stable && make
