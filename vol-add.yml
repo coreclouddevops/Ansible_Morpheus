@@ -6,18 +6,17 @@
     - name: install pip and boto
       shell: |
         sudo apt-get install python-pip -y
-        pip install -U boto
-        
+        sudo pip install boto || pip install -U boto
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
   gather_facts: False  # don't gather facts against localhost
   
   vars:
     volume_size: "{{ morpheus['customOptions']['volume_size'] }}"
-    volume_type: 'gp2'
-    device_name: '/dev/xvdf'
-    zone: 'us-east-2a'
-    region: 'us-east-2'
+    volume_type: "{{ morpheus['customOptions']['volume_type'] }}"
+    device_name: "{{ morpheus['customOptions']['device_name'] }}"
+    zone: "{{ morpheus['customOptions']['zone'] }}"
+    region: "{{ morpheus['customOptions']['region'] }}"
     instance: "{{ morpheus['customOptions']['instance_id'] }}"
 
   tasks:
@@ -53,6 +52,7 @@
     - name: Mounting the volume
       shell: |
         sudo mkfs -t ext4 /dev/xvdf 
+        sudo yum install xfsprogs
         sudo mkdir /data
         sudo mount /dev/xvdf /data
         sudo echo "UUID="$(blkid | sed -n '/xvdf/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /data  ext4  defaults,nofail  0  2" >> /etc/fstab
