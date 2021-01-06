@@ -3,13 +3,25 @@
   become: yes
   become_user: root
   tasks: 
-    - name: "Document DB Client install"
+    - name: "Redis-cli install"
       shell: |
-          sudo apt-get update -y
-          apt install mongodb-clients -y
-          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-          echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
-          sudo apt-get update -y
-          sudo apt-get install -y mongodb-org-shell
-          wget https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem
-         
+          sudo apt-get install redis-tools -y
+          sudo apt-get update
+          sudo apt-get install stunnel4
+      replace:
+        path: /etc/default/stunnel4
+        regexp: 'ENABLED=0'
+        replace: "ENABLED=1"
+      shell: |
+          touch /etc/stunnel/redis-cli.conf
+          cat <<EOF > /etc/stunnel/redis-cli.conf
+          [redis-client]
+          client = yes
+          accept = 127.0.0.1:6379
+          connect = master.redis-replica.eqnukq.use2.cache.amazonaws.com:6379
+          [redis-cli-replica]
+          client = yes
+          accept = 127.0.0.1:6380
+          connect = ssltest-002.ssltest.wif0lh.use1.cache.amazonaws.com:6379
+          EOF
+          sudo stunnel /etc/stunnel/redis-cli.conf
