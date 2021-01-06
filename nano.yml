@@ -13,7 +13,7 @@
           sudo apt-get install stunnel4
           
     - name: "Document DB Client install"
-      shell: |-
+      shell: |
           sudo apt-get update -y
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10</span>
           echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
