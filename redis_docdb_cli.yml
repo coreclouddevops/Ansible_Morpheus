@@ -1,6 +1,5 @@
 --- 
-- 
-  hosts: all
+- hosts: all
   tasks: 
     - name: "Redis-cli install"
       shell: |
