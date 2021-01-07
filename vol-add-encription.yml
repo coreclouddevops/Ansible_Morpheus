@@ -32,6 +32,7 @@
         zone: "{{ zone }}"
         tags:
           Name: linux_volume
+        encrypted: yes
       register: new_volume
       
 
