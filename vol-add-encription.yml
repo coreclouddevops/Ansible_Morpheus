@@ -30,6 +30,7 @@
         device_name: "{{ device_name }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
+        encrypted: yes
         kms_key_id: d8aed565-c0b3-4cde-8a65-de26bfc4a7bf
         tags:
           Name: linux_volume
