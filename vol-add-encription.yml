@@ -28,6 +28,8 @@
         volume_size: "{{ volume_size }}"
         volume_type: "{{ volume_type }}"
         device_name: "{{ device_name }}"
+        encrypted: true
+        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         region: "{{ region }}"
         zone: "{{ zone }}"
         tags:
@@ -57,6 +59,8 @@
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
+        encrypted: true
+        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         region: "{{ region }}"
         zone: "{{ zone }}"
       register: attach_volume
