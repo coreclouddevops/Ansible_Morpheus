@@ -33,22 +33,8 @@
         tags:
           Name: linux_volume
         encrypted: yes
-      register: new_volume
-      
-
-    - name: Encripting Volume
-      ec2_vol:
-        aws_access_key: "{{ lookup('cypher','secret=secret/ans_a') }}"
-        aws_secret_key: "{{ lookup('cypher','secret=secret/ans_s') }}"
-        instance: "{{ instance }}"
-        id: "{{ new_volume.volume_id }}"
-        device_name: "{{ device_name }}"
-        region: "{{ region }}"
-        zone: "{{ zone }}"
-        encrypted: true
         kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
-      register: encripting_volume
-      
+      register: new_volume      
 
     - name: Attaching created volume
       ec2_vol:
@@ -58,8 +44,6 @@
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
-        encrypted: true
-        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         region: "{{ region }}"
         zone: "{{ zone }}"
       register: attach_volume
