@@ -30,6 +30,7 @@
         device_name: "{{ device_name }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
+        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         tags:
           Name: linux_volume
       register: new_volume
@@ -42,7 +43,6 @@
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
         delete_on_termination: true
-        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         region: "{{ region }}"
         zone: "{{ zone }}"
       register: attach_volume
