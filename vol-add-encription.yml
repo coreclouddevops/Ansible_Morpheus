@@ -42,7 +42,6 @@
         instance: "{{ instance }}"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
-        volume_size: "{{ volume_size }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
         encrypted: true
