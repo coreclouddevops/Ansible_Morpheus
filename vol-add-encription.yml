@@ -31,7 +31,7 @@
         region: "{{ region }}"
         zone: "{{ zone }}"
         encrypted: yes
-        kms_key_id: d8aed565-c0b3-4cde-8a65-de26bfc4a7bf
+        kms_key_id: arn:aws:kms:us-east-2:478508728980:key/7e851bda-512c-44f7-9bc8-1c674dd56d4b
         tags:
           Name: linux_volume
       register: new_volume
