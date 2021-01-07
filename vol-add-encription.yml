@@ -30,10 +30,10 @@
         device_name: "{{ device_name }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
+        encrypted: yes
+        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         tags:
           Name: linux_volume
-      encrypted: yes
-      kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
       register: new_volume
 
     - name: Attaching created volume
