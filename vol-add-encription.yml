@@ -30,7 +30,7 @@
         device_name: "{{ device_name }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
-        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
+        kms_key_id: 7e851bda-512c-44f7-9bc8-1c674dd56d4b
         tags:
           Name: linux_volume
       register: new_volume
