@@ -42,10 +42,13 @@
         instance: "{{ instance }}"
         id: "{{ new_volume.volume_id }}"
         device_name: "{{ device_name }}"
+        volume_size: "{{ volume_size }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
-        encrypted: yes
-      register: attach_volume
+        encrypted: true
+        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
+      register: encripting_volume
+      
 
     - name: Attaching created volume
       ec2_vol:
