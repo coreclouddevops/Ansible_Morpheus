@@ -5,8 +5,8 @@
   tasks:
     - name: install pip and boto
       shell: |
-        sudo yum install python2-pip -y
-        sudo pip install boto
+        sudo apt-get install python-pip -y
+        pip install -U boto
         
 - hosts: all  # put localhost.  We are processing against aws
   connection: local  # put local.  We are processing against aws
