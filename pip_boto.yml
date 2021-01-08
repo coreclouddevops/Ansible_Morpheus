@@ -2,5 +2,9 @@
   become: yes
   become_user: root
   tasks:
-     - name: install the latest version of Apache
+     - name: install Python Pip
        package: name=python-pip state=latest
+       
+     - name: install boto
+       shell: |
+         sudo pip install boto
