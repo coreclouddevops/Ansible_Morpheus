@@ -2,9 +2,15 @@
   become: yes
   become_user: root
   tasks:
-     - name: install Python Pip
-       package: name=python-pip state=latest
-       
-     - name: install boto
+     - name: install pip and boto
        shell: |
+         sudo apt-get install python-pip -y
+         sudo pip install boto || pip install -U boto
+       when: ansible_distribution == "Ubuntu"
+       
+     - name: install pip and boto
+       shell: |
+         sudo yum install python2-pip -y
          sudo pip install boto
+       when: ansible_distribution == "CentOS" 
+       when: ansible_distribution == "Amazon"
