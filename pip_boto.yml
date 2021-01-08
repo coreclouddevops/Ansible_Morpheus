@@ -1,4 +1,4 @@
-- hosts: 127.0.0.1
+- hosts: local
   connection: local
   become: yes
   become_user: root
