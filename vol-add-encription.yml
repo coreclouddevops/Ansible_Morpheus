@@ -10,6 +10,7 @@
     zone: "{{ morpheus['customOptions']['zone'] }}"
     region: "{{ morpheus['customOptions']['region'] }}"
     instance: "{{ morpheus['customOptions']['instance_id'] }}"
+    encryption: "{{ morpheus['customOptions']['encryption'] }}"
 
   tasks:
     - name: Creating a new volume
@@ -21,11 +22,11 @@
         device_name: "{{ device_name }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
-        encrypted: true
+        encrypted: "{{ encryption }}"
         kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         tags:
           Name: linux_volume
-      register: new_volume
+      register: new_volume      
 
     - name: Attaching created volume
       ec2_vol:
