@@ -3,6 +3,5 @@
   become: yes
   become_user: root
   tasks:
-     - name: create file
-       shell: |
-         ifconfig >> /home/ubuntu/test.txt
+     - name: Install Phython Pip
+       spackage: name=python-pip state=latest
