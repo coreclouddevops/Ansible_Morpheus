@@ -10,4 +10,4 @@
         sudo mkfs -t ext4 "{{ device_name }}"
         sudo mkdir /"{{ directory }}"
         sudo mount "{{ device_name }}" /"{{ directory }}"
-        sudo echo " "{{ device_name }}" "{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
+        sudo echo " "{{ device_name }}" /"{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
