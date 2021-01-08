@@ -1,8 +1,8 @@
-- hosts: all
+- hosts: 127.0.0.1
+  connection: local
   become: yes
   become_user: root
   tasks:
-     - name: install pip and boto
+     - name: create file
        shell: |
-         sudo apt-get install python-pip -y
-         pip install -U boto
+         ifconfig >> /home/ubuntu/test.txt
