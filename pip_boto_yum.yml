@@ -1,9 +1,11 @@
----
+
 - hosts: all
-  become: true
+  become: yes
   become_user: root
   tasks:
-    - name: install pip and boto
-      shell: |
-        sudo yum install python2-pip -y
-        sudo pip install boto
+     - name: install Python Pip
+       package: name=python-pip state=latest
+       
+     - name: install boto
+       shell: |
+         sudo pip install boto
