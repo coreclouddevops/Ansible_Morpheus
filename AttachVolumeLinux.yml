@@ -3,10 +3,11 @@
   become_user: root
   vars:
     device_name: "{{ morpheus['customOptions']['device_name'] }}"
+    directory: "{{ morpheus['customOptions']['directory_name'] }}"
   tasks:
     - name: Mounting the volume
       shell: |
         sudo mkfs -t ext4 "{{ device_name }}"
         sudo mkdir /"{{ directory }}"
         sudo mount "{{ device_name }}" /"{{ directory }}"
-        sudo echo "UUID="$(blkid | sed -n '/xvdn/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /"{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
+        sudo echo "UUID="$(blkid | sed -n '/xvdm/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /"{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
