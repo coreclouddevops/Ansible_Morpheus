@@ -10,6 +10,4 @@
         sudo mkfs -t ext4 "{{ device_name }}"
         sudo mkdir /"{{ directory }}"
         sudo mount "{{ device_name }}" /"{{ directory }}"
-        path=$(echo "{{ device_name }}" | awk '{print substr($0,length-3,5)}')
-        cat ${path}
-        sudo echo "UUID="$(blkid | sed -n '/xvdl/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /"{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
+        sudo echo " "{{ device_name }}" "{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
