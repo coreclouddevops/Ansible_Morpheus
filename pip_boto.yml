@@ -13,5 +13,4 @@
        shell: |
          sudo yum install python2-pip -y
          sudo pip install boto
-       when: ansible_distribution == "CentOS" 
-       when: ansible_distribution == "Amazon"
+       when: when: ( ansible_distribution == "CentOS" ) or ( ansible_distribution == "Amazon" )
