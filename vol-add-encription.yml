@@ -21,6 +21,8 @@
         device_name: "{{ device_name }}"
         region: "{{ region }}"
         zone: "{{ zone }}"
+        encrypted: true
+        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
         tags:
           Name: linux_volume
       register: new_volume
