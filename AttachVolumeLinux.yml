@@ -8,6 +8,7 @@
     - name: Mounting the volume
       shell: |
         sudo mkfs -t ext4 "{{ device_name }}"
-        sudo mkdir /"{{ directory }}"
-        sudo mount "{{ device_name }}" /"{{ directory }}"
-        sudo echo "UUID="$(blkid | sed -n '/xvdm/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" /"{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
+        sudo mkdir "{{ directory }}"
+        sudo mount "{{ device_name }}" "{{ directory }}"
+        path=$(echo "{{ directory }}" | awk '{print substr($0,length-3,5)}')
+        sudo echo "UUID="$(blkid | sed -n '/${path}/s/.*UUID=\"\([^\"]*\)\".*/\1/p')" "{{ directory }}"  ext4  defaults,nofail  0  2" >> /etc/fstab
