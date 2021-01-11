@@ -5,8 +5,8 @@
   become_user: root
   tasks:
     - name: Install Python-pip for apt
-       package: name='python-pip' state=latest
-       when: ansible_distribution == "Ubuntu"
+      package: name='python-pip' state=latest
+      when: ansible_distribution == "Ubuntu"
 
     - name: Install Python-pip for YUM
       package: name='python2-pip' state=latest
