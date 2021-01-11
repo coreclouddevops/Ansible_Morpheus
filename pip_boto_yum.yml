@@ -3,7 +3,9 @@
   become: true
   become_user: root
   tasks:
+    - name: Install Python-pip
+       package: name='python2-pip' state=latest
+       
     - name: install pip and boto
       shell: |
-        sudo yum install python2-pip -y
         sudo pip install boto
