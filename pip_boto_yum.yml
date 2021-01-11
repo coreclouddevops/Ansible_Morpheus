@@ -4,8 +4,8 @@
   become: true
   become_user: root
   tasks:
-    - name: Install Python2-pip
-      package: name='python2-pip' state=latest
+    - name: Install Python-pip
+      package: name='python-pip' state=latest
        
     - name: install pip and boto
       shell: |
