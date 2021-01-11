@@ -7,16 +7,10 @@
        shell: |
          sudo apt-get install python-pip -y
          sudo pip install boto || pip install -U boto
-       when: ansible_distribution == "Ubuntu"
+       when: ansible_distribution == 'Ubuntu'
        
      - name: install pip and boto in Cent OS
        shell: |
          sudo yum install python2-pip -y
          sudo pip install boto
-       when: ansible_distribution == "CentOS" 
-
-     - name: install pip and boto in Cent OS
-       shell: |
-         sudo yum install python2-pip -y
-         sudo pip install boto
-       when: ansible_distribution == "Amazon"
+       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Amazon'
