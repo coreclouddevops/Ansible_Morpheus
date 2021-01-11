@@ -4,7 +4,7 @@
   tasks: 
    - name: run multi-lined shell commands
      win_shell: |
-         select disk 2
+         select disk 1
          attributes disk clear readonly
          clean
          online disk
