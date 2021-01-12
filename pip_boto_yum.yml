@@ -15,3 +15,17 @@
     - name: install pip and boto
       shell: |
         sudo pip install boto
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "CentOS" or ansible_distribution == "Amazon"  
+
+    - name: Install chocolatey
+      win_chocolatey:
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+           - python2
+           - pip
+          state: present
+      when: ansible_os_family == "Windows"
+      
+    - win_shell: pip.exe install boto     
+      when: ansible_os_family == "Windows"                  
