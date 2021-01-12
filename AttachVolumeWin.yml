@@ -4,6 +4,7 @@
   tasks: 
    - name: run multi-lined shell commands
      win_shell: |
+         diskpart
          select disk 2
          attributes disk clear readonly
          clean
