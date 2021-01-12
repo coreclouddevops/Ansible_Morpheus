@@ -4,11 +4,11 @@
   tasks: 
    - name: run multi-lined shell commands
      win_shell: |
-         select disk 1
+         select disk 2
          attributes disk clear readonly
          clean
          online disk
          convert gpt
          create partition primary
-         format quick fs=ntfs label=,\,ORATEMP,\,
+         format quick fs=ntfs label=Dev
          assign letter=D
