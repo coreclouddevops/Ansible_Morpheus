@@ -2,14 +2,7 @@
   become: yes
   become_user: Administrator
   tasks: 
-   - name: run multi-lined shell commands
-     win_shell: |
-         diskpart
-         select disk 2
-         attributes disk clear readonly
-         clean
-         online disk
-         convert gpt
-         create partition primary
-         format quick fs=ntfs label=Dev
-         assign letter=E
+   - name: Resize previously created partition to it's maximum size and change it's drive letter to E
+     community.windows.win_partition:
+       drive_letter: E
+       disk_number: 2
