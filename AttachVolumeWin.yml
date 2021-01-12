@@ -2,9 +2,16 @@
   become: yes
   become_user: Administrator
   tasks: 
-    - name: run multi-lined shell commands
-      community.general.parted:
+    - parted:
         device: /dev/sdi
         number: 2
+        flags: [ lvm ]
         state: present
-        fs_type: ntfs
+    - filesystem:
+        fstype: ntfs
+        dev: /dev/sdbi
+    - mount:
+        fstype: ntfs
+        src: /dev/sdbi
+        path: /data
+        state: mounted
