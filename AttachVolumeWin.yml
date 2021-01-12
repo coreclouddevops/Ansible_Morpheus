@@ -1,11 +1,15 @@
---- 
-- become: true
+- hosts: all
+  become: yes
   become_user: Administrator
-  hosts: all
   tasks: 
-    - community.windows.win_partition: 
-        disk_number: 2
-        drive_letter: E
-        file_system: ntfs
-        new_label: data
-      name: "run multi-lined shell commands"
+   - name: run multi-lined shell commands
+     win_shell: |
+         diskpart
+         select disk 1
+         attributes disk clear readonly
+         clean
+         online disk
+         convert gpt
+         create partition primary
+         format quick fs=ntfs label=Data
+         assign letter=D
