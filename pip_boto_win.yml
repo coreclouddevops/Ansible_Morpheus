@@ -1,0 +1,13 @@
+- hosts: all
+  become: yes
+  become_user: Administrator
+  tasks: 
+    - name: Install chocolatey
+      win_chocolatey:
+          name:
+           - chocolatey
+           - chocolatey-core.extension
+           - python2
+           - pip
+          state: present
+    - win_shell: pip.exe install boto
