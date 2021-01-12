@@ -24,7 +24,7 @@
         region: "{{ region }}"
         zone: "{{ zone }}"
         encrypted: "{{ encryption }}"
-        kms_key_id: "{{ kms_key }}" 9a5444a1-7b32-4f45-bc21-09f45e32026d
+        kms_key_id: "{{ kms_key }}"
         tags:
           Name: linux_volume
       register: new_volume      
