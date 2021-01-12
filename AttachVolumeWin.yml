@@ -2,9 +2,9 @@
   become: yes
   become_user: Administrator
   tasks: 
-   - name: run multi-lined shell commands
-     community.windows.win_partition:
-       drive_letter: E
-       file_system : ntfs
-       new_label: data
-       disk_number: 2
+    - name: run multi-lined shell commands
+      community.windows.win_partition:
+        drive_letter: E
+        file_system : ntfs
+        new_label: data
+        disk_number: 2
