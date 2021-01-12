@@ -2,7 +2,9 @@
   become: yes
   become_user: Administrator
   tasks: 
-    - name: Resize previously created partition to it's maximum size and change it's drive letter to E
-      community.windows.win_partition:
-        drive_letter: E
-        disk_number: 2
+   - name: run multi-lined shell commands
+     community.windows.win_partition:
+       drive_letter: E
+       file_system : ntfs
+       new_label: data
+       disk_number: 2
