@@ -3,7 +3,7 @@
   become_user: Administrator
   tasks: 
     - name: run multi-lined shell commands
-      community.windows.win_partition:
+      win_partition:
         drive_letter: E
         file_system : ntfs
         new_label: data
