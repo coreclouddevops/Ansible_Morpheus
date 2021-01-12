@@ -1,10 +1,11 @@
-- hosts: all
-  become: yes
+--- 
+- become: true
   become_user: Administrator
+  hosts: all
   tasks: 
-    - name: run multi-lined shell commands
-      community.windows.win_partition:
-        drive_letter: E
-        file_system : ntfs
-        new_label: data
+    - community.windows.win_partition: 
         disk_number: 2
+        drive_letter: E
+        file_system: ntfs
+        new_label: data
+      name: "run multi-lined shell commands"
