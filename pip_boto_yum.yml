@@ -18,6 +18,7 @@
       when: ansible_distribution == "Ubuntu" or ansible_distribution == "CentOS" or ansible_distribution == "Amazon"  
 
     - name: Install chocolatey
+      become_user: Administrator
       win_chocolatey:
           name:
            - chocolatey
@@ -26,6 +27,6 @@
            - pip
           state: present
       when: ansible_os_family == "Windows"
-      
+
     - win_shell: pip.exe install boto     
       when: ansible_os_family == "Windows"                  
