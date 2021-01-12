@@ -3,8 +3,8 @@
   become_user: Administrator
   tasks: 
     - name: run multi-lined shell commands
-      win_partition:
-        drive_letter: E
-        file_system : ntfs
-        new_label: data
-        disk_number: 2
+      community.general.parted:
+        device: /dev/sdi
+        number: 2
+        state: present
+        fs_type: ntfs
