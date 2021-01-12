@@ -11,4 +11,4 @@
          convert gpt
          create partition primary
          format quick fs=ntfs label=Dev
-         assign letter=D
+         assign letter=E
