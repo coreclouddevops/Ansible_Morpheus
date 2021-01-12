@@ -11,6 +11,7 @@
     region: "{{ morpheus['customOptions']['region'] }}"
     instance: "{{ morpheus['customOptions']['instance_id'] }}"
     encryption: "{{ morpheus['customOptions']['encryption'] }}"
+    kms_key: "{{ morpheus['customOptions']['kms_key'] }}"
 
   tasks:
     - name: Creating a new volume
@@ -23,7 +24,7 @@
         region: "{{ region }}"
         zone: "{{ zone }}"
         encrypted: "{{ encryption }}"
-        kms_key_id: 9a5444a1-7b32-4f45-bc21-09f45e32026d
+        kms_key_id: "{{ kms_key }}" 9a5444a1-7b32-4f45-bc21-09f45e32026d
         tags:
           Name: linux_volume
       register: new_volume      
