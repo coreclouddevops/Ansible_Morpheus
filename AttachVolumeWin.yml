@@ -6,7 +6,7 @@
     - name: run multi-lined shell commands
       win_shell: |
           echo "diskpart.exe /s ./disk.txt" > ./disk.bat
-          echo > ./disk.txt
+          echo "" > ./disk.txt
           echo "select disk 1" > ./disk.txt
           echo "attributes disk clear readonly" >> ./disk.txt
           echo "clean" >> ./disk.txt
