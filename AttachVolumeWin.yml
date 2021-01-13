@@ -3,13 +3,13 @@
   become_user: Administrator
   tasks: 
    - name: run multi-lined shell commands
-     win_shell: |
-         diskpart
-         select disk 1
-         attributes disk clear readonly
-         clean
-         online disk
-         convert gpt
-         create partition primary
-         format quick fs=ntfs label=Dev
-         assign letter=D
+     win_psexec:
+        win_shell: |
+            diskpart
+            select disk 1
+            attributes disk clear readonly
+            clean
+            online disk
+            create partition primary
+            format quick fs=ntfs label=Data
+            assign letter=D
