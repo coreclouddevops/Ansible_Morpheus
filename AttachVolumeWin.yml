@@ -3,14 +3,9 @@
   become_user: Administrator
   hosts: all
   tasks: 
-    - name: run multi-lined shell commands
-      win_shell: |
-          echo "select disk 2" > ./disk.bat
-          echo "attributes disk clear readonly" >> ./disk.bat
-          echo "clean" >> ./disk.bat
-          echo "create partition primary" >> ./disk.bat
-          echo "format quick fs=ntfs label=data" >> ./disk.bat
-          echo "assign letter=D" >> ./disk.bat
-          echo "online disk" >> ./disk.bat
+    - name: Run diskpart
+      community.windows.win_psexec:
+        command:  diskpart /s ./test2.txt
+          
     
   
