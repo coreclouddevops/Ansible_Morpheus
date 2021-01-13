@@ -3,7 +3,7 @@
   become_user: Administrator
   hosts: all
   tasks: 
-    - community.windows.win_psexec: 
+    - win_psexec: 
         command: "diskpart /s ./disk.txt"
       name: "Run diskpart" 
     
