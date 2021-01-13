@@ -2,16 +2,12 @@
   become: yes
   become_user: Administrator
   tasks: 
-    - parted:
-        device: /dev/sdi
-        number: 2
-        flags: [ lvm ]
-        state: present
-    - filesystem:
-        fstype: ntfs
-        dev: /dev/sdbi
-    - mount:
-        fstype: ntfs
-        src: /dev/sdbi
-        path: /data
-        state: mounted
+    diskpart
+    select disk 1
+    attributes disk clear readonly
+    clean
+    online disk
+    convert gpt
+    create partition primary
+    format quick fs=ntfs label=Dev
+    assign letter=D
