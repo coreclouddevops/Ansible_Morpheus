@@ -5,11 +5,11 @@
    - name: run multi-lined shell commands
      win_shell: |
          diskpart
-         select disk 2
+         select disk 1
          attributes disk clear readonly
          clean
          online disk
          convert gpt
          create partition primary
          format quick fs=ntfs label=Dev
-         assign letter=E
+         assign letter=D
