@@ -5,15 +5,17 @@
   tasks: 
     - name: run multi-lined shell commands
       win_shell: |
-          echo "diskpart.exe /s ./disk.txt" > ./disk.bat
-          echo "" > ./disk.txt
-          echo "select disk 1" > ./disk.txt
-          echo "attributes disk clear readonly" >> ./disk.txt
-          echo "clean" >> ./disk.txt
-          echo "online disk" >> ./disk.txt
-          echo "create partition primary" >> ./disk.txt
-          echo "format quick fs=ntfs label=data" >> ./disk.txt
-          echo "assign letter=D" >> ./disk.txt
+         
+          echo "" > ./disk.bat
+          echo "(echo Rescan" >> ./disk.bat
+          echo "select disk 1" >> ./disk.bat
+          echo "attributes disk clear readonly" >> ./disk.bat
+          echo "clean" >> ./disk.bat
+          echo "online disk" >> ./disk.bat
+          echo "create partition primary" >> ./disk.bat
+          echo "format quick fs=ntfs label=data" >> ./disk.bat
+          echo "assign letter=D" >> ./disk.bat
+          echo ")  | diskpart" >> ./disk.bat
 
     - name: Simple batch script
       win_command: "./disk.bat"
