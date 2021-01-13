@@ -7,13 +7,13 @@
       win_shell: |
           echo "diskpart.exe /s ./disk.txt" > ./disk.bat
           echo > ./disk.txt
-          echo "select disk 3" > ./disk.txt
+          echo "select disk 1" > ./disk.txt
           echo "attributes disk clear readonly" >> ./disk.txt
           echo "clean" >> ./disk.txt
           echo "online disk" >> ./disk.txt
           echo "create partition primary" >> ./disk.txt
-          echo "format quick fs=ntfs label=test" >> ./disk.txt
-          echo "assign letter=G" >> ./disk.txt
+          echo "format quick fs=ntfs label=data" >> ./disk.txt
+          echo "assign letter=D" >> ./disk.txt
 
     - name: Simple batch script
       win_command: "./disk.bat"
