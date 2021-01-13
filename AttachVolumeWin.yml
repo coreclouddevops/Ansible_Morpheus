@@ -3,9 +3,8 @@
   become_user: Administrator
   hosts: all
   tasks: 
-    - name: Run diskpart
-      community.windows.win_psexec:
-        command:  diskpart /s ./test2.txt
-          
+    - name: run multi-lined shell commands
+      win_shell: |
+          diskpart /s ./test2.txt 
     
   
