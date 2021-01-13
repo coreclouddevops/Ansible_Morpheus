@@ -12,4 +12,7 @@
           echo "create partition primary" >> ./disk.txt
           echo "format quick fs=ntfs label=test" >> ./disk.txt
           echo "assign letter=G" >> ./disk.txt
-          diskpart /s ./disk.txt
+          
+    - name: Run diskpart
+      community.windows.win_psexec:
+        command:  diskpart /s ./disk.txt   
