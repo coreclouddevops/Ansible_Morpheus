@@ -1,8 +1,9 @@
-- hosts: all
-  become: yes
+--- 
+- become: true
   become_user: Administrator
+  hosts: all
   tasks: 
-    - name: run multi-lined shell commands
+    - name: "run multi-lined shell commands"
       win_shell: |
           echo > ./disk.txt
           echo "select disk 3" > ./disk.txt
@@ -12,7 +13,7 @@
           echo "create partition primary" >> ./disk.txt
           echo "format quick fs=ntfs label=test" >> ./disk.txt
           echo "assign letter=G" >> ./disk.txt
-          
-    - name: Run diskpart
-      community.windows.win_psexec:
-        command:  diskpart /s ./disk.txt   
+    - community.windows.win_psexec: 
+        command: "diskpart /s ./disk.txt"
+      name: "Run diskpart"
+  
