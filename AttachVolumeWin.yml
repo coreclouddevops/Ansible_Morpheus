@@ -3,7 +3,19 @@
   become_user: Administrator
   hosts: all
   tasks: 
-    - win_shell: diskpart.exe /s ./disk.txt
-      name: "Run diskpart" 
+    - name: run multi-lined shell commands
+      win_shell: |
+          echo "diskpart.exe /s ./disk.txt" > ./disk.bat
+          echo > ./disk.txt
+          echo "select disk 3" > ./disk.txt
+          echo "attributes disk clear readonly" >> ./disk.txt
+          echo "clean" >> ./disk.txt
+          echo "online disk" >> ./disk.txt
+          echo "create partition primary" >> ./disk.txt
+          echo "format quick fs=ntfs label=test" >> ./disk.txt
+          echo "assign letter=G" >> ./disk.txt
+
+    - name: run multi-lined shell commands
+      win_shell: ./disk.bat
     
   
