@@ -5,7 +5,6 @@
   tasks: 
     - name: run multi-lined shell commands
       win_shell: |
-         
           echo "" > ./disk.bat
           echo "(echo Rescan" >> ./disk.bat
           echo "select disk 1" >> ./disk.bat
