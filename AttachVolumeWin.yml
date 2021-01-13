@@ -15,7 +15,7 @@
           echo "format quick fs=ntfs label=test" >> ./disk.txt
           echo "assign letter=G" >> ./disk.txt
 
-    - name: run multi-lined shell commands
-      win_shell: ./disk.bat
+    - name: Simple batch script
+      win_command: "./disk.bat"
     
   
