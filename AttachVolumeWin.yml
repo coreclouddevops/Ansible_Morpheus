@@ -2,14 +2,15 @@
   become: yes
   become_user: Administrator
   tasks: 
-    - name: Test the PsExec connection to the local system (target node) with your user
-      community.windows.win_psexec:
-        command: |
-          diskpart
-          select disk 1
+    - name: run multi-lined shell commands
+      win_shell: |
+          (
+          select disk 3
           attributes disk clear readonly
           clean
           online disk
           create partition primary
-          format quick fs=ntfs label=Data
-          assign letter=D
+          format quick fs=ntfs label=test
+          assign letter=G
+          ) > disk.txt
+          diskpart /s ./disk.txt
