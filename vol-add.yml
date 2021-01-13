@@ -5,7 +5,7 @@
   vars:
     volume_size: "{{ morpheus['customOptions']['volume_size'] }}"
     volume_type: "{{ morpheus['customOptions']['volume_type'] }}"
-    device_name: "{{ morpheus['customOptions']['device_name'] }}"
+    device_name: "{{ morpheus['customOptions']['device_name_Windows'] }}"
     zone: "{{ morpheus['customOptions']['zone'] }}"
     region: "{{ morpheus['customOptions']['region'] }}"
     instance: "{{ morpheus['customOptions']['instance_id'] }}"
