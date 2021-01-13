@@ -2,9 +2,9 @@
   become: yes
   become_user: Administrator
   tasks: 
-   - name: run multi-lined shell commands
-     win_psexec:
-        win_shell: |
+   - name: Test the PsExec connection to the local system (target node) with your user
+     community.windows.win_psexec:
+       command: |
             diskpart
             select disk 1
             attributes disk clear readonly
