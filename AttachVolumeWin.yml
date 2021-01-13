@@ -3,6 +3,9 @@
   become_user: Administrator
   hosts: all
   tasks: 
+    - win_psexec:
+        command: whoami.exe
+
     - win_psexec: 
         command: "diskpart /s ./disk.txt"
       name: "Run diskpart" 
