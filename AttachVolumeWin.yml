@@ -9,13 +9,13 @@
     drive_letter: "{{ morpheus['customOptions']['drive_letter'] }}"
   tasks: 
     - name: initialize disk
-      win_shell: Initialize-Disk -Number 3
+      win_shell: Initialize-Disk -Number 1
 
     - name: Partition the created volume
       win_partition:
         drive_letter: "{{ drive_letter }}"
         partition_size: -1
-        disk_number: 3
+        disk_number: 1
         offline: no
     - name: Full format the newly created partition as NTFS and label it
       win_format:
