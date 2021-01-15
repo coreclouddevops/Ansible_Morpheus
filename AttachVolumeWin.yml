@@ -5,20 +5,18 @@
   vars:
     ansible_python_interpreter: C:\Python27\python.exe
   tasks: 
-    - name: initialize disk
-      win_shell: Initialize-Disk -Number 1
-
-    - name: Partition the created volume
-      win_partition:
-        drive_letter: D
-        partition_size: -1
-        disk_number: 1
-        offline: no
-    - name: Full format the newly created partition as NTFS and label it
-      win_format:
-        drive_letter: D
-        file_system: NTFS
-        new_label: Data
-        full: True
+    - parted:
+        device: /dev/sdh
+        number: 1
+        flags: [ lvm ]
+        state: present
+    - filesystem:
+        fstype: ntfs
+        dev: /dev/sdbh
+    - mount:
+        fstype: ntfs
+        src: /dev/sdbh
+        path: /data
+        state: mounted
     
   
