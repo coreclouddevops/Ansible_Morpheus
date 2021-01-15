@@ -3,7 +3,7 @@
   gather_facts: False  # don't gather facts against localhost
   
   vars:
-    ansible_python_interpreter: C:\Python39\python.exe
+    #ansible_python_interpreter: C:\Python39\python.exe
     volume_size: "{{ morpheus['customOptions']['volume_size'] }}"
     volume_type: "{{ morpheus['customOptions']['volume_type'] }}"
     device_name: "{{ morpheus['customOptions']['device_name_Windows'] }}"
