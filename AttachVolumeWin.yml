@@ -3,8 +3,12 @@
   become_user: Administrator
   hosts: all
   tasks: 
-    - name: run multi-lined shell commands
-      win_shell: |
-          diskpart /s ./test2.txt 
+    - name: Resize previously created partition to it's maximum size and change it's drive letter to E
+      win_partition:
+        drive_letter: E
+        file_system : ntfs
+        new_label: data
+        disk_number: 1
+        offlin: no
     
   
