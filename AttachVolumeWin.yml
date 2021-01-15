@@ -5,12 +5,12 @@
   vars:
     ansible_python_interpreter: C:\Python27\python.exe
   tasks: 
-    - name: Create a partition with drive letter D and size 5 GiB
+    - name: Partition the created volume
       win_partition:
         drive_letter: D
-        partition_size: -1
+        partition_size: 10
         disk_number: 1
-
+        offline: no
     - name: Full format the newly created partition as NTFS and label it
       win_format:
         drive_letter: D
