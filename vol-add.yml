@@ -1,5 +1,5 @@
 ---
-- hosts: all #linux-ubuntu.localdomain  # put localhost.  We are processing against aws
+- hosts: linux-ubuntu.localdomain  # put localhost.  We are processing against aws
   gather_facts: False  # don't gather facts against localhost
   
   vars:
