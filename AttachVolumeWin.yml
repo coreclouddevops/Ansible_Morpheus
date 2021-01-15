@@ -2,6 +2,8 @@
 - become: true
   become_user: Administrator
   hosts: all
+  vars:
+    ansible_python_interpreter: C:\Python27\python.exe
   tasks: 
     - name: Resize previously created partition to it's maximum size and change it's drive letter to E
       win_partition:
