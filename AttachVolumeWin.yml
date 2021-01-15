@@ -5,6 +5,9 @@
   vars:
     ansible_python_interpreter: C:\Python27\python.exe
   tasks: 
+    - name: initialize disk
+      win_shell: Initialize-Disk -Number 2
+
     - name: Partition the created volume
       win_partition:
         drive_letter: E
