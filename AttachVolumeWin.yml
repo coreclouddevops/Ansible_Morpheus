@@ -8,7 +8,7 @@
     - name: Partition the created volume
       win_partition:
         drive_letter: D
-        partition_size: 10
+        partition_size: 10 GB
         disk_number: 1
         offline: no
     - name: Full format the newly created partition as NTFS and label it
