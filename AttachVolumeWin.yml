@@ -7,15 +7,15 @@
   tasks: 
     - name: Partition the created volume
       win_partition:
-        drive_letter: D
+        drive_letter: E
         partition_size: -1
-        disk_number: 1
+        disk_number: 2
         offline: no
     - name: Full format the newly created partition as NTFS and label it
       win_format:
-        drive_letter: D
+        drive_letter: E
         file_system: NTFS
-        new_label: Data
+        new_label: Dev
         full: True
     
   
