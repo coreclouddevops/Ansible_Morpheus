@@ -4,5 +4,5 @@
   tasks: 
     - name: Install chocolatey
       win_shell: |
-         choco install python
+         choco install -y python
          python -m pip install -U pip
