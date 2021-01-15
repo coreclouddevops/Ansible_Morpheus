@@ -2,7 +2,7 @@
   become: yes
   become_user: Administrator
   tasks: 
-    - name: Install chocolatey
+    - name: Install Python
       win_shell: |
-         choco install -y python
+         choco install python
          python -m pip install -U pip
