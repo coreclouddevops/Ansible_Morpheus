@@ -7,21 +7,22 @@
     ansible_python_interpreter: C:\Python39\python.exe
     drive_name: "{{ morpheus['customOptions']['drive_name'] }}"
     drive_letter: "{{ morpheus['customOptions']['drive_letter'] }}"
+    present_volume: "{{ morpheus['customOptions']['present_volume'] }}"
   tasks: 
     - name: initialize disk
-      win_shell: Initialize-Disk -Number 1
+      win_shell: Initialize-Disk -Number "{{ present_volume }}"
 
     - name: Partition the created volume
       win_partition:
         drive_letter: "{{ drive_letter }}"
         partition_size: -1
-        disk_number: 1
+        disk_number: "{{ present_volume }}"
         offline: no
     - name: Full format the newly created partition as NTFS and label it
       win_format:
         drive_letter: "{{ drive_letter }}"
         file_system: NTFS
         new_label: "{{ drive_name }}"
-        full: True
+        #full: True
     
   
