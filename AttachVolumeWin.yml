@@ -4,7 +4,7 @@
   hosts: all
   gather_facts: true
   vars:
-    ansible_python_interpreter: C:\Python27\python.exe
+    ansible_python_interpreter: C:\Python39\python.exe
     drive_name: "{{ morpheus['customOptions']['drive_name'] }}"
     drive_letter: "{{ morpheus['customOptions']['drive_letter'] }}"
   tasks: 
