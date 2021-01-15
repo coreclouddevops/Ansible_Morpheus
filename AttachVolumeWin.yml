@@ -8,7 +8,6 @@
     - parted:
         device: /dev/sdh
         number: 1
-        flags: [ lvm ]
         state: present
     - filesystem:
         fstype: ntfs
