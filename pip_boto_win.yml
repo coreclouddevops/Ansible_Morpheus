@@ -4,5 +4,5 @@
   tasks: 
     - name: Install Python
       win_shell: |
-         choco install python
+         choco install python --version=3.9.0
          python -m pip install -U pip
