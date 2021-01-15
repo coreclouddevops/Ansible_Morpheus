@@ -5,12 +5,17 @@
   vars:
     ansible_python_interpreter: C:\Python27\python.exe
   tasks: 
-    - name: Resize previously created partition to it's maximum size and change it's drive letter to E
+    - name: Create Partition
       win_partition:
-        drive_letter: E
+        drive_letter: D
         file_system : ntfs
-        new_label: data
         disk_number: 1
-        offlin: no
+
+    - name: Format Partition    
+      win_format:
+        drive_letter: D
+        file_system: NTFS
+        new_label: Data
+        full: True
     
   
