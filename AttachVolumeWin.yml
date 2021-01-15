@@ -2,6 +2,7 @@
 - become: true
   become_user: Administrator
   hosts: all
+  gather_facts: true
   vars:
     ansible_python_interpreter: C:\Python27\python.exe
   tasks: 
