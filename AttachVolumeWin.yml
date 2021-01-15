@@ -8,7 +8,7 @@
     - name: Create a partition with drive letter D and size 5 GiB
       win_partition:
         drive_letter: D
-        partition_size: 10 GiB
+        partition_size: -1
         disk_number: 1
 
     - name: Full format the newly created partition as NTFS and label it
