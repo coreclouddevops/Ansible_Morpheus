@@ -23,6 +23,5 @@
         drive_letter: "{{ drive_letter }}"
         file_system: NTFS
         new_label: "{{ drive_name }}"
-        #full: True
     
   
