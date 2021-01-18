@@ -6,7 +6,7 @@
             "Properties": {
                 "ImageId": "ami-0b9487791bf873774",
                 "KeyName": "morpheus-ssh-key",
-                "InstanceType" : "t2.medium",
+                "InstanceType" : "t2.micro",
                 "SubnetId" : "subnet-0bf6c1897e590775a",
                 "SecurityGroupIds" : ["sg-047ad5bf457b52ec8"],
                 "Tags" : [{"Key" : "Name", "Value" : "Test"}]
