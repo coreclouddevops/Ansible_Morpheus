@@ -1,7 +1,7 @@
 {
     "Description": " AWS CloudFormation Server",
     "Resources": {
-        "LisaServer": {
+        "Ec2Server": {
             "Type": "AWS::EC2::Instance",
             "Properties": {
                 "ImageId": "ami-0b9487791bf873774",
