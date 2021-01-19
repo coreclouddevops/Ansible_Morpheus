@@ -2,10 +2,6 @@
   become: yes
   become_user: Administrator
   tasks: 
-    - name: Install choco
-      win_shell: |
-         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
     - name: Install Python
       win_shell: |
          choco install python --version=3.9.0 -y
