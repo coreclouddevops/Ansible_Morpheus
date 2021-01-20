@@ -1,5 +1,5 @@
 ---
-- hosts: linux.localdomain  # put localhost.  We are processing against aws
+- hosts: centos.localdomain  # put localhost.  We are processing against aws
   gather_facts: False  # don't gather facts against localhost
   
   vars:
