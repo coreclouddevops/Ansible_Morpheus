@@ -2,6 +2,8 @@
 - hosts: all
   become: yes
   become_user: root
+  vars:
+    DOCDBURL: "{{ morpheus['customOptions']['docdburl'] }}"
   tasks: 
     - name: "Redis-cli install"
       shell: |
@@ -17,7 +19,7 @@
           [redis-client]
           client = yes
           accept = 127.0.0.1:6379
-          connect = master.redis-replica.eqnukq.use2.cache.amazonaws.com:6379
+          connect = "{{ DOCDBURL }}":6379
           [redis-cli-replica]
           client = yes
           accept = 127.0.0.1:6380
